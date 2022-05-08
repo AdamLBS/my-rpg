@@ -23,6 +23,7 @@ void manage_click_welcome_util(tags *game)
         create_texture("pictures/menu_buttons/Scoreboard3.png");
         sfSprite_setTexture(game->sprites->sscoreboard,
         game->text->tscoreboard, sfTrue);
+        sfView_setSize(all_infos()->view, (sfVector2f) {1920 / 2, 1080 / 2});
         all_infos()->level = 1;
     }
 }

@@ -630,6 +630,8 @@ void free_map(int i);
 
 void free_particules(void);
 
+void load_game_utils(tags *game);
+
 // level 2 (pause peut-etre)
 
 void level_2(sfEvent event);

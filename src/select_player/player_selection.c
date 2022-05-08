@@ -28,6 +28,9 @@ void level_event(tags *game)
         }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEnter) {
             all_infos()->level = 1;
+            sfView_setCenter(all_infos()->view, (sfVector2f) {10 * 50, (10 * 35) - 16});
+            sfView_setSize(all_infos()->view, (sfVector2f) {1920 / 2, 1080 / 2});
+            sfRenderWindow_setView(all_infos()->window, all_infos()->view);
             full_perso(HUNTER, 10 * 50, 10 * 35);
         }
         if (event.type == sfEvtMouseButtonReleased)

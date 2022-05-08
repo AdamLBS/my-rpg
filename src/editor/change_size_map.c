@@ -8,7 +8,6 @@
 #include "my.h"
 #include "rpg_header.h"
 
-
 void change_size_map_next (int old_size_y, int old_size_x)
 {
     while (all_editor()->size_edit.x > old_size_x) {

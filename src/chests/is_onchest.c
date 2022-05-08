@@ -14,7 +14,8 @@ void is_onchest(void)
     int final_y = (all_sprites()[HUNTER].pos.y) / (SIZE_TILE);
     if (!all_maps()[all_infos()->map_actual].mg[final_y])
         return;
-    if (all_maps()[all_infos()->map_actual].mg[final_y][final_x] == 'P' || all_infos()->level == CHEST) {
+    if (all_maps()[all_infos()->map_actual].mg[final_y][final_x] == 'P'
+    || all_infos()->level == CHEST) {
         sfSprite_setScale(all_sprites()[INTERACTION_BT].sprite,
         (sfVector2f) {2, 2});
         sfSprite_setPosition(all_sprites()[INTERACTION_BT].sprite,

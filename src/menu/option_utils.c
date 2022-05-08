@@ -10,14 +10,17 @@
 
 void mouse_position_option(tags *game)
 {
-    all_infos()->mouse_position = sfMouse_getPositionRenderWindow(all_infos()->window);
+    all_infos()->mouse_position =
+    sfMouse_getPositionRenderWindow(all_infos()->window);
     if (sfFloatRect_contains(&game->f_rects->menu_button_b,
     all_infos()->mouse_position.x, all_infos()->mouse_position.y)) {
-        game->text->trestart = create_texture("pictures/menu_buttons/Menu2.png");
+        game->text->trestart =
+        create_texture("pictures/menu_buttons/Menu2.png");
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
     } else {
-        game->text->trestart = create_texture("pictures/menu_buttons/Menu.png");
+        game->text->trestart =
+        create_texture("pictures/menu_buttons/Menu.png");
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
     }
@@ -37,7 +40,8 @@ void manage_mouse_click_util(tags *game)
     }
     if (sfFloatRect_contains(&game->f_rects->menu_button_b,
     all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
-        game->text->trestart = create_texture("pictures/menu_buttons/Menu3.png");
+        game->text->trestart =
+        create_texture("pictures/menu_buttons/Menu3.png");
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
         all_infos()->level = 0;
@@ -47,7 +51,8 @@ void manage_mouse_click_util(tags *game)
 
 void manage_mouse_click_option(tags *game)
 {
-    all_infos()->mouse_click = sfMouse_getPositionRenderWindow(all_infos()->window);
+    all_infos()->mouse_click =
+    sfMouse_getPositionRenderWindow(all_infos()->window);
     if (sfFloatRect_contains(&game->f_rects->frame30_button_b,
     all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
         game->text->tframe = create_texture("pictures/menu_buttons/30_3.png");

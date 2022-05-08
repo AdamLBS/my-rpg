@@ -28,12 +28,16 @@ void restore_player_type(int type, char *buffer)
         return;
     int player_type = my_getnbr(buffer);
     if (player_type == 1) {
-        all_sprites()[HUNTER].texture = create_texture("pictures/Characters/Hunter/Hunter.png");
-        sfSprite_setTexture(all_sprites()[HUNTER].sprite, all_sprites()[HUNTER].texture, sfTrue);
+        all_sprites()[HUNTER].texture =
+        create_texture("pictures/Characters/Hunter/Hunter.png");
+        sfSprite_setTexture(all_sprites()[HUNTER].sprite,
+        all_sprites()[HUNTER].texture, sfTrue);
     }
     if (player_type == 2) {
-        all_sprites()[HUNTER].texture = create_texture("pictures/Characters/Hunter/Hunter_blue.png");
-        sfSprite_setTexture(all_sprites()[HUNTER].sprite, all_sprites()[HUNTER].texture, sfTrue);
+        all_sprites()[HUNTER].texture =
+        create_texture("pictures/Characters/Hunter/Hunter_blue.png");
+        sfSprite_setTexture(all_sprites()[HUNTER].sprite,
+        all_sprites()[HUNTER].texture, sfTrue);
     }
     all_infos()->player_type = player_type;
     return;

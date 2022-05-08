@@ -18,7 +18,8 @@ sf_text *all_texts(void)
 void create_texts(void)
 {
     game_texts = malloc(sizeof(main_screen));
-    game_texts->font = sfFont_createFromFile("font/AncientModernTales-a7Po.ttf");
+    game_texts->font =
+    sfFont_createFromFile("font/AncientModernTales-a7Po.ttf");
     game_texts->simple_text = sfText_create();
     sfText_setFont(game_texts->simple_text, game_texts->font);
     sfText_setColor(game_texts->simple_text, sfBlack);

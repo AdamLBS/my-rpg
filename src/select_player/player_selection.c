@@ -11,11 +11,16 @@
 void render_level(tags *game)
 {
     sfRenderWindow_clear(all_infos()->window, sfBlack);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->sbackground, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, all_sprites()[HUNTER].sprite, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->squit, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->sstart, NULL);
-    sfRenderWindow_drawText(all_infos()->window, all_texts()->simple_text, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->sbackground, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    all_sprites()[HUNTER].sprite, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->squit, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->sstart, NULL);
+    sfRenderWindow_drawText(all_infos()->window,
+    all_texts()->simple_text, NULL);
 }
 
 void level_event(tags *game)
@@ -27,8 +32,10 @@ void level_event(tags *game)
             return;
         }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEnter) {
-            sfView_setCenter(all_infos()->view, (sfVector2f) {10 * 50, (10 * 35) - 16});
-            sfView_setSize(all_infos()->view, (sfVector2f) {1920 / 2, 1080 / 2});
+            sfView_setCenter(all_infos()->view,
+            (sfVector2f) {10 * 50, (10 * 35) - 16});
+            sfView_setSize(all_infos()->view,
+            (sfVector2f) {1920 / 2, 1080 / 2});
             sfRenderWindow_setView(all_infos()->window, all_infos()->view);
             full_perso(HUNTER, 10 * 50, 10 * 35);
             all_infos()->level = STORY;

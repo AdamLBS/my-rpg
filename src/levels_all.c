@@ -19,7 +19,7 @@ bool clock_cycle_update(void)
     return false;
 }
 
-void on_clock_update()
+void on_clock_update(void)
 {
     if (!clock_cycle_update()) {
         return;
@@ -73,18 +73,6 @@ void game_loop(tags *game)
         check_win_lose();
         sfRenderWindow_display(all_infos()->window);
     }
-}
-
-void malloc_all(tags *game)
-{
-    game->f_rects = malloc(sizeof(f_rect));
-    game->sprites = malloc(sizeof(t_sprites));
-    game->text = malloc(sizeof(t_text));
-    initialize_sprite_menu(game);
-    initialize_bounds_menu(game);
-    inicialize_variables_option(game);
-    inicialize_sprite_option(game);
-    initialize_options_game(game);
 }
 
 int start_game_loop(void)

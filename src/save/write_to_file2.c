@@ -11,7 +11,8 @@
 void save_healthpoints(FILE *fd)
 {
     fwrite("#health\n", 1, my_strlen("#health\n"), fd);
-    fwrite(my_itoa(all_infos()->life), 1, my_strlen(my_itoa(all_infos()->life)), fd);
+    fwrite(my_itoa(all_infos()->life), 1,
+    my_strlen(my_itoa(all_infos()->life)), fd);
     fwrite("\n", 1, 1, fd);
     return;
 }

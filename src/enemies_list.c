@@ -53,11 +53,6 @@ void explore_map_find_all_ennemis_next(int map, int i, int j)
         add_enemies_to_list(map, NINJA, j * SIZE_TILE, (i * SIZE_TILE) + 16);
     if (map == 0 && (c[0] == 47 || c[0] == 46))
         all_infos()->nb_of_enemies_outside++;
-    // if (c[0] == '-')
-    //     add_npcs_to_list(map, NPC, j * SIZE_TILE, (i * SIZE_TILE) + 16);
-    // if (c[0] == ',')
-    //     add_npcs_to_list(map, NPC2, j * SIZE_TILE, (i * SIZE_TILE) + 16);
-    // (*c) = 'R';
 }
 
 void explore_map_find_all_ennemis(int map)

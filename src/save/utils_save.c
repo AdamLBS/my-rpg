@@ -33,7 +33,6 @@ void handle_map_actual(int *type, char *buffer)
     return;
 }
 
-
 void handle_inventory(char *buffer, int *type)
 {
     int nb = 0;

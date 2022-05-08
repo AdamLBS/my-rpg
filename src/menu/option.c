@@ -11,14 +11,22 @@
 void render_option(tags *game)
 {
     sfRenderWindow_clear(all_infos()->window, sfBlack);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->sbackground, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->sframe, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->sframe2, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->srestart, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->ssound, NULL);
-    sfRenderWindow_drawText(all_infos()->window, all_texts()->simple_text, NULL);
-    sfRenderWindow_drawText(all_infos()->window, all_texts()->simple_text2, NULL);
-    sfRenderWindow_drawText(all_infos()->window, all_texts()->simple_text3, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->sbackground, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->sframe, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->sframe2, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->srestart, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->ssound, NULL);
+    sfRenderWindow_drawText(all_infos()->window,
+    all_texts()->simple_text, NULL);
+    sfRenderWindow_drawText(all_infos()->window,
+    all_texts()->simple_text2, NULL);
+    sfRenderWindow_drawText(all_infos()->window,
+    all_texts()->simple_text3, NULL);
 }
 
 void inicialize_variables_option(tags *game)

@@ -20,7 +20,8 @@ void create_sprite_picture(sprite_pictures *sprite_picture, char *filepath)
 {
     sprite_picture->sprite = sfSprite_create();
     sprite_picture->texture = sfTexture_createFromFile(filepath, NULL);
-    sfSprite_setTexture(sprite_picture->sprite, sprite_picture->texture, sfTrue);
+    sfSprite_setTexture(sprite_picture->sprite,
+    sprite_picture->texture, sfTrue);
     sprite_picture->scale.x = 1;
     sprite_picture->scale.y = 1;
 }

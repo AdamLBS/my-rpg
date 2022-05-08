@@ -10,12 +10,6 @@
 
 void reinitialize2(void)
 {
-    all_infos()->move_u = false;
-    all_infos()->move_d = false;
-    all_infos()->move_l = false;
-    all_infos()->move_r = false;
-    all_infos()->life_size = 150;
-    all_infos()->doing_quest = false;
     all_infos()->clock = sfClock_create();
     all_infos()->clock_val = 0;
     all_infos()->particules = NULL;
@@ -30,9 +24,30 @@ void reinitialize2(void)
     sfView_setSize(all_infos()->hud_view, (sfVector2f) {1920, 1080});
     sfRenderWindow_setView(all_infos()->window, all_infos()->hud_view);
     all_infos()->last_move = 'd';
-    sfView_setCenter(all_infos()->view, (sfVector2f) {10 * 50, (10 * 35) - 16});
+    sfView_setCenter(all_infos()->view,
+    (sfVector2f) {10 * 50, (10 * 35) - 16});
     sfView_setSize(all_infos()->view, (sfVector2f) {1920 / 2, 1080 / 2});
     sfRenderWindow_setView(all_infos()->window, all_infos()->view);
+}
+
+void reset_2(void)
+{
+    all_infos()->quest_done[0] = '\0';
+    all_infos()->quest_done[1] = '\0';
+    all_infos()->quest_done[2] = '\0';
+    all_infos()->banana_nb = 0;
+    all_infos()->move_u = false;
+    all_infos()->move_d = false;
+    all_infos()->move_l = false;
+    all_infos()->move_r = false;
+    all_infos()->life_size = 150;
+    all_infos()->doing_quest = false;
+    all_infos()->apple_nb = 0;
+    struct_inventory *val = NULL;
+    all_infos()->inventory = val;
+    all_infos()->stamina_clock = sfClock_create();
+    all_infos()->text_clock = sfClock_create();
+    all_infos()->text_char = 0;
 }
 
 void reinitialize1(void)
@@ -51,16 +66,7 @@ void reinitialize1(void)
     all_infos()->life = 10;
     all_infos()->stamina = 10;
     all_infos()->opened_chest = false;
-    all_infos()->quest_done[0] = '\0';
-    all_infos()->quest_done[1] = '\0';
-    all_infos()->quest_done[2] = '\0';
-    all_infos()->banana_nb = 0;
-    all_infos()->apple_nb = 0;
-    struct_inventory *val = NULL;
-    all_infos()->inventory = val;
-    all_infos()->stamina_clock = sfClock_create();
-    all_infos()->text_clock = sfClock_create();
-    all_infos()->text_char = 0;
+    reset_2();
     reinitialize2();
     return;
 }

@@ -78,14 +78,14 @@
 #define ARROW          18
 #define WRITE_BOX      19
 #define INFO           20
-#define BANANA_INFO    "The best bananas of our\n village !\n Gives you 2\
- health points\n and full stamina !\n Press 'F' to eat\n Press 'U' to drop\n"
-#define APPLE_INFO    "The best apples of our\n village !\n Gives you 1\
- health points\n and half stamina !\n Press 'F' to eat\n Press 'U' to drop\n"
+#define BANANA_INFO    "The best bananas of our\n village !\n Gives you 2 \
+health points\n and full stamina !\n Press 'F' to eat\n Press 'U' to drop\n"
+#define APPLE_INFO    "The best apples of our\n village !\n Gives you 1 \
+health points\n and half stamina !\n Press 'F' to eat\n Press 'U' to drop\n"
 #define SCREEN_MAX_Y 1080
 #define SCREEN_MAX_X 1920
-#define EMPTY_INVENTORY     "Unfortunatly, your inventory is empty.\n"
-#define START_TEXT      "You wake up in an unfamiliar village...\n\
+#define EMPTY_INVENTORY "Unfortunatly, your inventory is empty.\n"
+#define START_TEXT "You wake up in an unfamiliar village...\n\
 You hear ninjas and sounds of demons, are you in hell? \n\
 You slowly open your eyes and see green grass and dazzling sunshine.\n\
 You hear screams, a woman calls you and the demons approach you...\n \
@@ -263,7 +263,6 @@ typedef struct struct_interact {
     int a_x;
     int a_y;
     int type;
-    // ? bool locked; ?
     int data;
     struct struct_interact *next;
 } struct_interact;
@@ -276,8 +275,6 @@ typedef struct struct_maps {
     npcs *all_npcs;
     enemies *all_ennemis;
     struct_interact *interact;
-    // infos items ? in chest
-    // items / panneaux ?
 } struct_maps;
 
 typedef struct editor_screen {
@@ -709,7 +706,7 @@ void new_projectile_manager(void);
 projectile_t *new_projectile(vec2d_t position, vec2d_t velocity,
 int damage, int type);
 
-projectile_t **get_projectile_dictionary();
+projectile_t **get_projectile_dictionary(void);
 
 void shoot_projectile(projectile_t *projectile);
 
@@ -860,3 +857,49 @@ void save_nb_enemies(FILE *fd);
 void restore_nb_of_enemies(int type, char *buffer);
 
 int get_type_of_data4(char *line, int *type, int *run, bool enter);
+
+void manage_mouse_click_level2(tags *game);
+
+void mouse_position_menu2(tags *game);
+
+void mouse_position_pause2(tags *game);
+
+void manage_mouse_click_util_3(tags *game);
+
+void stop_all_sounds_2(char c, char mg);
+
+void reset_2(void);
+
+bool check_if_mission_was_done(char find);
+
+void check_for_easter_egg(sfEvent event);
+
+void event_level_quest(void);
+
+void print_quest(char *text);
+
+void npc_check_quest_3(npcs *expl);
+
+void on_clock_update(void);
+
+void move_pos_player_utils(char a);
+
+void malloc_all(tags *game);
+
+void change_pos_and_views (int x, int y);
+
+void full_list_sprites_next(void);
+
+void full_list_sprites_more_infos(void);
+
+void inventory_utils_event(sfEvent event);
+
+void event_level_game_relased_next (sfEvent event);
+
+void event_level_game_relased(sfEvent event);
+
+void event_level_game(sfEvent event);
+
+void event_level_game_pressed_next(sfEvent event);
+
+void event_level_game_pressed(sfEvent event);

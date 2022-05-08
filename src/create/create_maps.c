@@ -12,7 +12,6 @@ static struct_maps *map_dictionary;
 
 struct_interact *interactions_of_map(char *str, struct_maps autr);
 
-// sus
 struct_maps edit_bg_pas_gabriel(struct_maps autr)
 {
     int size = 0;

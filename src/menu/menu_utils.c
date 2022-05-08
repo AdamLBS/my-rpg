@@ -32,13 +32,20 @@ void manage_click_welcome_util(tags *game)
 void render_menu(tags *game)
 {
     sfRenderWindow_clear(all_infos()->window, sfBlack);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->sbackground, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->sstart, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->squit, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->soption, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->sscoreboard, NULL);
-    sfRenderWindow_drawSprite(all_infos()->window, game->sprites->seditor, NULL);
-    sfRenderWindow_drawText(all_infos()->window, all_texts()->simple_text, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->sbackground, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->sstart, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->squit, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->soption, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->sscoreboard, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->seditor, NULL);
+    sfRenderWindow_drawText(all_infos()->window,
+    all_texts()->simple_text, NULL);
 }
 
 void initialize_bounds_menu(tags *game)

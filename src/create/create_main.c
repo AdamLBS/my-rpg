@@ -15,7 +15,7 @@ main_screen *all_infos(void)
     return infos;
 }
 
-void initialize_main_vals(void)
+void main_vals_utils(void)
 {
     infos->move_u = false;
     infos->move_d = false;
@@ -25,6 +25,24 @@ void initialize_main_vals(void)
     infos->doing_quest = false;
     infos->clock = sfClock_create();
     infos->player_type = 0;
+    infos->zoom = 1;
+    infos->move = '\0';
+    infos->life = 10;
+    infos->stamina = 10;
+    infos->opened_chest = false;
+    infos->quest_done[0] = '\0';
+    infos->quest_done[1] = '\0';
+    infos->quest_done[2] = '\0';
+    all_infos()->banana_nb = 0;
+    all_infos()->apple_nb = 0;
+}
+
+void initialize_main_vals(void)
+{
+    main_vals_utils();
+    infos->level = 0;
+    infos->ennemy_id = 0;
+    infos->quit_main = 0;
     infos->clock_val = 0;
     infos->particules = NULL;
     infos->view_position.x = 960;
@@ -65,25 +83,12 @@ void create_main(void)
     sfVideoMode mode = {SCREEN_MAX_X, SCREEN_MAX_Y, 60};
     infos->window = sfRenderWindow_create(mode, "RPG",
     sfResize | sfClose, NULL);
-    infos->level = 0;
-    infos->ennemy_id = 0;
-    infos->quit_main = 0;
     infos->map_actual = 0;
     infos->pos_player.x = 500;
     infos->pos_player.y = 350;
     infos->first_run = false;
     infos->save = false;
     infos->nb_of_zoom = 1;
-    infos->zoom = 1;
-    infos->move = '\0';
-    infos->life = 10;
-    infos->stamina = 10;
-    infos->opened_chest = false;
-    infos->quest_done[0] = '\0';
-    infos->quest_done[1] = '\0';
-    infos->quest_done[2] = '\0';
-    all_infos()->banana_nb = 0;
-    all_infos()->apple_nb = 0;
     struct_inventory *val = NULL;
     infos->inventory = val;
     all_infos()->stamina_clock = sfClock_create();

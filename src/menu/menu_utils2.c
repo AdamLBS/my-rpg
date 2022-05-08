@@ -17,7 +17,8 @@ sfTexture *create_texture(char *path)
 
 void mouse_position_menu(tags *game)
 {
-    all_infos()->mouse_position = sfMouse_getPositionRenderWindow(all_infos()->window);
+    all_infos()->mouse_position =
+    sfMouse_getPositionRenderWindow(all_infos()->window);
     if (sfFloatRect_contains(&game->f_rects->start_button_b,
     all_infos()->mouse_position.x, all_infos()->mouse_position.y)) {
         game->text->tstart = create_texture("pictures/menu_buttons/Play2.png");
@@ -26,16 +27,7 @@ void mouse_position_menu(tags *game)
         game->text->tstart = create_texture("pictures/menu_buttons/Play.png");
         sfSprite_setTexture(game->sprites->sstart, game->text->tstart, sfTrue);
     }
-    if (sfFloatRect_contains(&game->f_rects->option_button_b,
-    all_infos()->mouse_position.x, all_infos()->mouse_position.y)) {
-        game->text->toption = create_texture("pictures/menu_buttons/Options2.png");
-        sfSprite_setTexture(game->sprites->soption,
-        game->text->toption, sfTrue);
-    } else {
-        game->text->toption = create_texture("pictures/menu_buttons/Options.png");
-        sfSprite_setTexture(game->sprites->soption,
-        game->text->toption, sfTrue);
-    }
+    mouse_position_menu2(game);
     mouse_position_util_menu(game);
 }
 

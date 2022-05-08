@@ -35,7 +35,8 @@ void save_map_actual(FILE *fd)
 
 void save_position_to_file(FILE *fd)
 {
-    int tmp_x = (int)all_sprites()[HUNTER].pos.x, tmp_y = (int)all_sprites()[HUNTER].pos.y;
+    int tmp_x = (int)all_sprites()[HUNTER].pos.x,
+    tmp_y = (int)all_sprites()[HUNTER].pos.y;
     char *x = my_itoa(tmp_x);
     char *y = my_itoa(tmp_y);
     fwrite("#player_pos\n", 1, my_strlen("#player_pos\n"), fd);
@@ -66,7 +67,7 @@ void save_inventory_to_file(FILE *fd)
     for (;inv; inv = inv->next) {
         if (inv->object != BANANA && inv->object != APPLE)
             continue;
-        run ++;
+        run++;
         obj = my_itoa(inv->object);
         fwrite(obj, 1, my_strlen(obj), fd);
         if (inv->next != NULL)

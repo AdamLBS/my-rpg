@@ -23,9 +23,6 @@ void level_map_editor_event(sfEvent event)
     }
 }
 
-// pb avec dernier char des str du char **
-// 0 fichier = default
-// si param, modif map existante
 void level_map_editor_clock(void)
 {
     if ((all_infos()->move_u || all_infos()->move_d ||

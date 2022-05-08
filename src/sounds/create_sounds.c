@@ -47,11 +47,7 @@ void stop_all_sounds(char c, char mg)
         check_status(all_infos()->sounds->stone);
         stop_sound(all_infos()->sounds->grass);
     }
-    if (c == 'F' || mg == 'l' || mg == 'm' || mg == 'n' && is_moving()) {
-        check_status(all_infos()->sounds->wood);
-        stop_sound(all_infos()->sounds->grass);
-        stop_sound(all_infos()->sounds->stone);
-    }
+    stop_all_sounds_2(c, mg);
 }
 
 void stop_sound(sfSound *sound)

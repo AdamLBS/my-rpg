@@ -17,7 +17,8 @@ void mouse_position_pause_2(tags *game)
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
     } else {
-        game->text->trestart = create_texture("pictures/menu_buttons/Menu.png");
+        game->text->trestart =
+        create_texture("pictures/menu_buttons/Menu.png");
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
     }
@@ -34,15 +35,6 @@ void mouse_position_pause(tags *game)
     } else {
         game->text->tquit = create_texture("pictures/menu_buttons/Quit.png");
         sfSprite_setTexture(game->sprites->squit, game->text->tquit, sfTrue);
-    }
-    if (sfFloatRect_contains(&game->f_rects->start_button_b,
-    all_infos()->mouse_position.x, all_infos()->mouse_position.y)) {
-        game->text->tstart = create_texture
-        ("pictures/menu_buttons/Resume2.png");
-        sfSprite_setTexture(game->sprites->sstart, game->text->tstart, sfTrue);
-    } else {
-        game->text->tstart = create_texture("pictures/menu_buttons/Resume.png");
-        sfSprite_setTexture(game->sprites->sstart, game->text->tstart, sfTrue);
     }
     mouse_position_pause_2(game);
 }

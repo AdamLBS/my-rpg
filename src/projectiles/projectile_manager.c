@@ -17,7 +17,7 @@ void new_projectile_manager(void)
     projectile_dictionary = malloc(sizeof(projectile_t *) * MAX_PROJECTILES);
 }
 
-projectile_t **get_projectile_dictionary()
+projectile_t **get_projectile_dictionary(void)
 {
     return projectile_dictionary;
 }

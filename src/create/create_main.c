@@ -24,6 +24,7 @@ void initialize_main_vals(void)
     infos->life_size = 150;
     infos->doing_quest = false;
     infos->clock = sfClock_create();
+    infos->player_type = 0;
     infos->clock_val = 0;
     infos->particules = NULL;
     infos->view_position.x = 960;

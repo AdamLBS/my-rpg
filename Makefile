@@ -7,6 +7,7 @@
 
 SRC = 	src/*.c \
 		src/save/*.c \
+		src/story/*.c \
 		src/create/*.c \
 		src/sounds/*.c \
 		src/editor/*.c \

@@ -29,105 +29,29 @@ int does_save_exists(int check)
 int get_info_save(void)
 {
     FILE *fd = fopen("save.txt", "r");
-    char *line = NULL;
+    char *line = NULL, *buf = NULL;
     int type = 0, run = 1;
     size_t len;
-    char *buf = NULL;
     sfVector2f pos;
     while (getline(&line, &len, fd) != -1) {
-        if (my_strstr(line, "#player_pos")) {
-            type = 1;
+        if (get_type_of_data(line, &type, &run))
             continue;
-        }
-        if (my_strstr(line, "#view_info")) {
-            type = 2;
-            run = 1;
-            continue;
-        }
-        if (my_strstr(line, "#map_actual")) {
-            type = 3;
-            run = 1;
-            continue;
-        }
-        if (my_strstr(line, "#inventory")) {
-            type = 4;
-            run = 1;
-            continue;
-        }
-        if (my_strstr(line, "#closed_chests")) {
-            type = 5;
-            run = 1;
-            continue;
-        }
-        if (my_strstr(line, "#quest") && !my_strstr(line, "#quest_done")) {
-            type = 6;
-            run = 1;
-            continue;
-        }
-        if (my_strstr(line, "#quest_done")) {
-            type = 7;
-            run = 1;
-            continue;
-        }
-        handle_map_actual(&type, line);
-        handle_player_pos(line, &type, run);
-        pos = handle_view_pos(line, &type, run, pos);
-        handle_inventory(line, &type);
-        handle_save_chests(line, &type);
-        restore_quests(line, &type);
-        restore_quests_done(line, &type);
+        handle_infos(line, &type, &run, &pos);
         run++;
     }
-    return type;
 }
 
-void handle_inventory(char *buffer, int *type)
+void handle_infos(char *line, int *type, int *run, sfVector2f *pos)
 {
-    int nb = 0;
-    if (*type != 4)
-        return;
-    add_to_inventory(&all_infos()->inventory, my_getnbr(buffer));
-    return;
-}
-
-void handle_player_pos(char *buffer, int *type, int run)
-{
-    if (*type != 1)
-        return;
-    if (run == 1) {
-        int x = my_getnbr(buffer);
-        all_sprites()[HUNTER].pos.x = x;
-    } else {
-        int y = my_getnbr(buffer);
-        all_sprites()[HUNTER].pos.y = y;
-        sfSprite_setPosition(all_sprites()[HUNTER].sprite,
-        all_sprites()[HUNTER].pos);
-        *type = 0;
-    }
-    return;
-}
-
-sfVector2f handle_view_pos(char *buffer, int *type, int run, sfVector2f pos)
-{
-    if (*type != 2)
-        return pos;
-    if (run == 1) {
-        int x = my_getnbr(buffer);
-        pos.x = x;
-    } else {
-        int y = my_getnbr(buffer);
-        pos.y = y;
-        sfView_setCenter(all_infos()->view, pos);
-        *type = 0;
-    }
-    return pos;
-}
-
-void handle_map_actual(int *type, char *buffer)
-{
-    if (*type != 3)
-        return;
-    all_infos()->map_actual = my_getnbr(buffer);
-    *type = 0;
-    return;
+    handle_map_actual(type, line);
+    handle_player_pos(line, type, *run);
+    *pos = handle_view_pos(line, type, *run, *pos);
+    handle_inventory(line, type);
+    handle_save_chests(line, type);
+    restore_quests(line, type);
+    restore_quests_done(line, type);
+    restore_health_points(*type, line);
+    restore_life_size(*type, line);
+    restore_player_type(*type, line);
+    restore_nb_of_enemies(*type, line);
 }

@@ -17,7 +17,11 @@ void write_infos_to_file(void)
     save_inventory_to_file(fd);
     save_quests(fd);
     save_quests_id(fd);
+    save_healthpoints(fd);
+    save_healthsize(fd);
+    save_player_type(fd);
     save_opened_chests(fd);
+    save_nb_enemies(fd);
     fclose(fd);
 }
 

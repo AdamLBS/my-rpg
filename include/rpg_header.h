@@ -35,6 +35,7 @@
 #define PAUSE 9
 #define END 10
 #define CHOSE_NPC 11
+#define STORY 12
 
 #define BUFF_SIZE 512
 
@@ -83,6 +84,14 @@
 #define SCREEN_MAX_Y 1080
 #define SCREEN_MAX_X 1920
 #define EMPTY_INVENTORY     "Unfortunatly, your inventory is empty.\n"
+#define START_TEXT      "You wake up in an unfamiliar village...\n\
+You hear ninjas and sounds of demons, are you in hell? \n\
+You slowly open your eyes and see green grass and dazzling sunshine.\n\
+You hear screams, a woman calls you and the demons approach you...\n \
+A man takes you out of the well in which you woke up \n\
+and tells you that you are in charge of an extraordinary mission...\n \
+Save Gebastien Goby, from the claws of demons...\n \
+Would you be up to it?\n\n\n\n Press F to continue"
 
 struct texture {
     sfTexture *tbackground;
@@ -337,6 +346,7 @@ typedef struct main_screen {
     // particules :
     struct_particule *particules;
     int killed_ennemys;
+    int player_type;
     //view
     sfView *view;
     sfView *hud_view;
@@ -807,3 +817,35 @@ void close_soundbuffer(sfSound const *sound);
 void reset_save(void);
 
 void load_game_utils(tags *game);
+
+void print_story(char *text);
+
+void story(void);
+
+void event_level_story(void);
+
+void save_healthpoints(FILE *fd);
+
+void save_healthsize(FILE *fd);
+
+void save_player_type(FILE *fd);
+
+void restore_health_points(int type, char *buffer);
+
+void restore_life_size(int type, char *buffer);
+
+void restore_player_type(int type, char *buffer);
+
+int get_type_of_data(char *line, int *type, int *run);
+
+int get_type_of_data2(char *line, int *type, int *run, bool enter);
+
+int get_type_of_data3(char *line, int *type, int *run, bool enter);
+
+void handle_infos(char *line, int *type, int *run, sfVector2f *pos);
+
+void save_nb_enemies(FILE *fd);
+
+void restore_nb_of_enemies(int type, char *buffer);
+
+int get_type_of_data4(char *line, int *type, int *run, bool enter);

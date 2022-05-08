@@ -16,12 +16,14 @@ void manage_mouse_click_level(tags *game)
         all_sprites()[HUNTER].texture = create_texture("pictures/Characters/Hunter/Hunter.png");
         sfSprite_setTexture(all_sprites()[HUNTER].sprite, all_sprites()[HUNTER].texture, sfTrue);
         full_perso(HUNTER, 10 * 50, 10 * 35);
+        all_infos()->player_type = 1;
     }
     if (sfFloatRect_contains(&game->f_rects->quit_button_b,
     all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
         all_sprites()[HUNTER].texture = create_texture("pictures/Characters/Hunter/Hunter_blue.png");
         sfSprite_setTexture(all_sprites()[HUNTER].sprite, all_sprites()[HUNTER].texture, sfTrue);
         full_perso(HUNTER, 10 * 50, 10 * 35);
+        all_infos()->player_type = 2;
     }
     sfSprite_setScale(all_sprites()[HUNTER].sprite, (sfVector2f) {30, 30});
 }

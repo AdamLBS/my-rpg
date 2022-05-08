@@ -31,8 +31,8 @@ void enemy_shoot_hunter(enemies *enemy)
 
 void bow_release(void)
 {
-    bool bow_loaded = all_infos()->loading_bow
-    && all_infos()->charging_ticks > 1;
+    bool bow_loaded = all_infos()->bo->loading_bow
+    && all_infos()->in->charging_ticks > 1;
     if (!sfKeyboard_isKeyPressed(all_keys()->shoot) && bow_loaded) {
         all_infos()->move = all_infos()->last_move;
         sfVector2f pos = sfSprite_getPosition(all_sprites()[HUNTER].sprite);
@@ -43,6 +43,6 @@ void bow_release(void)
         projectile->from_hunter = true;
         shoot_projectile(projectile);
     }
-    all_infos()->charging_ticks = 0;
-    all_infos()->loading_bow = false;
+    all_infos()->in->charging_ticks = 0;
+    all_infos()->bo->loading_bow = false;
 }

@@ -43,8 +43,6 @@ void add_enemies_to_list(int map, int value, int x, int y)
     last->next = new_enemy;
 }
 
-void add_npcs_to_list(int map, int value, int x, int y);
-
 void explore_map_find_all_ennemis_next(int map, int i, int j)
 {
     char *c = &all_maps()[map].fg[i][j];
@@ -55,7 +53,7 @@ void explore_map_find_all_ennemis_next(int map, int i, int j)
     else if (c[0] == 46)
         add_enemies_to_list(map, NINJA, j * SIZE_TILE, (i * SIZE_TILE) + 16);
     if (map == 0 && (c[0] == 47 || c[0] == 46))
-        all_infos()->nb_of_enemies_outside++;
+        all_infos()->in->nb_of_enemies_outside++;
 }
 
 void explore_map_find_all_ennemis(int map)
@@ -68,7 +66,7 @@ void explore_map_find_all_ennemis(int map)
 
 void display_all_enemies(void)
 {
-    enemies *expl = all_maps()[all_infos()->map_actual].all_ennemis;
+    enemies *expl = all_maps()[all_infos()->in->map_actual].all_ennemis;
     while (expl) {
         sfSprite_setPosition(all_sprites()[expl->value].sprite, expl->pos);
         sfRenderWindow_drawSprite(all_infos()->window,

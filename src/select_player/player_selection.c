@@ -28,7 +28,7 @@ void level_event(tags *game)
     sfEvent event;
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtClosed) {
-            all_infos()->quit_main = 1;
+            all_infos()->in->quit_main = 1;
             return;
         }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEnter) {
@@ -38,7 +38,7 @@ void level_event(tags *game)
             (sfVector2f) {1920 / 2, 1080 / 2});
             sfRenderWindow_setView(all_infos()->window, all_infos()->view);
             full_perso(HUNTER, 10 * 50, 10 * 35);
-            all_infos()->level = STORY;
+            all_infos()->in->level = STORY;
             return;
         }
         if (event.type == sfEvtMouseButtonReleased)

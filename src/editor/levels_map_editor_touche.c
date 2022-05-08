@@ -29,29 +29,27 @@ void paint_bucket_tool (void)
     }
 }
 
-// etcher portable
-// les 2 dernieres tiles ne sont pas accessible
 void la_bonne_touche_editor_move (sfEvent event)
 {
     if (event.key.code == sfKeyN && all_editor()->ptr_map_edit)
         paint_bucket_tool();
     if (event.key.code == all_keys()->k_down)
-        all_infos()->move_d = true;
+        all_infos()->bo->move_d = true;
     if (event.key.code == all_keys()->k_up)
-        all_infos()->move_u = true;
+        all_infos()->bo->move_u = true;
     if (event.key.code == all_keys()->k_left)
-        all_infos()->move_l = true;
+        all_infos()->bo->move_l = true;
     if (event.key.code == all_keys()->k_right)
-        all_infos()->move_r = true;
+        all_infos()->bo->move_r = true;
 }
 
 void la_bonne_touche_editor (sfEvent event)
 {
     if (event.type == sfEvtKeyReleased) {
-        all_infos()->move_d = false;
-        all_infos()->move_u = false;
-        all_infos()->move_l = false;
-        all_infos()->move_r = false;
+        all_infos()->bo->move_d = false;
+        all_infos()->bo->move_u = false;
+        all_infos()->bo->move_l = false;
+        all_infos()->bo->move_r = false;
         return;
     }
     if (!(event.type == sfEvtKeyPressed))
@@ -63,7 +61,7 @@ void la_bonne_touche_editor (sfEvent event)
         all_editor()->map_bg = NULL;
         all_editor()->map_mg = NULL;
         all_editor()->map_fg = NULL;
-        all_infos()->level = 0;
+        all_infos()->in->level = 0;
     }
     la_bonne_touche_editor_move(event);
 }

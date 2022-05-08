@@ -11,7 +11,7 @@
 void story(void)
 {
     event_level_story();
-    if (all_infos()->quit_main == 1) {
+    if (all_infos()->in->quit_main == 1) {
         close_sounds();
         return;
     }
@@ -22,11 +22,11 @@ void story(void)
 
 void print_story(char *text)
 {
-    int i = 4, j = all_infos()->text_char;
+    int j = all_infos()->in->text_char;
     sfTime time = sfClock_getElapsedTime(all_infos()->text_clock);
     if (sfTime_asMilliseconds(time) > 50) {
         if (j + 1 < my_strlen(text))
-            all_infos()->text_char += 1;
+        all_infos()->in->text_char += 1;
         sfClock_restart(all_infos()->text_clock);
     }
     char *tmp = my_strdup_to(text, j);
@@ -41,13 +41,13 @@ void event_level_story(void)
     sfEvent event;
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtClosed) {
-            all_infos()->quit_main = 1;
+            all_infos()->in->quit_main = 1;
             return;
         }
         if (event.type == sfEvtKeyPressed &&
             event.key.code == all_keys()->k_interact) {
-                all_infos()->text_char = 0;
-                all_infos()->level = GAME;
+                all_infos()->in->text_char = 0;
+                all_infos()->in->level = GAME;
         }
     }
     return;

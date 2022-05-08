@@ -10,12 +10,6 @@
 
 static sprite_pictures *sprite_dictionary;
 
-void full_perso(int type, int x, int y);
-
-void origin_in_8_8_scale(int sprite);
-
-void full_list_sprites_next(void);
-
 void create_sprite_picture(sprite_pictures *sprite_picture, char *filepath)
 {
     sprite_picture->sprite = sfSprite_create();

@@ -36,7 +36,7 @@ void edit_existing_file_next (char **bg, char **mg, char **fg)
 
 void edit_existing_file (char *filepath_dir)
 {
-    all_infos()->level = MAP_EDITOR;
+    all_infos()->in->level = MAP_EDITOR;
     char *filepath = malloc(sizeof(char) * BUFF_SIZE);
     my_memset(filepath, 511, '\0');
     my_strcpy(filepath, filepath_dir);

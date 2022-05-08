@@ -18,7 +18,7 @@ void manage_mouse_click_end_game(tags *game)
         ("pictures/menu_buttons/Menu3.png", NULL);
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
-        all_infos()->level = 0;
+        all_infos()->in->level = 0;
         set_menu(game);
     }
     if (sfFloatRect_contains(&game->f_rects->quit_button_b,
@@ -28,7 +28,7 @@ void manage_mouse_click_end_game(tags *game)
         sfSprite_setTexture(game->sprites->squit,
         game->text->tquit, sfTrue);
         write_infos_to_file();
-        all_infos()->quit_main = 1;
+        all_infos()->in->quit_main = 1;
     }
 }
 

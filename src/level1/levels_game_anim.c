@@ -28,7 +28,7 @@ void idle_perso(void)
 
 void anim_perso(void)
 {
-    if (!all_infos()->move || !all_infos()->can_move)
+    if (!all_infos()->move || !all_infos()->bo->can_move)
         return;
     anim_perso_according_to_int();
     sfSprite_setTextureRect(all_sprites()[HUNTER].sprite,
@@ -37,17 +37,18 @@ void anim_perso(void)
 
 void find_all_particules_from_mg (void)
 {
-    for (int i = 0; all_maps()[all_infos()->map_actual].mg[i]; i++) {
-        for (int j = 0; all_maps()[all_infos()->map_actual].mg[i][j]; j++) {
+    for (int i = 0; all_maps()[all_infos()->in->map_actual].mg[i]; i++) {
+        for (int j = 0; all_maps()[all_infos()->in->map_actual].mg[i][j];) {
             find_tile_particle(all_maps()[
-            all_infos()->map_actual].mg[i][j], i, j);
+            all_infos()->in->map_actual].mg[i][j], i, j);
+            j++;
         }
     }
 }
 
 void level_game_animations(void)
 {
-    if (!(all_infos()->clock_val % 10)) {
+    if (!(all_infos()->in->clock_val % 10)) {
         if (all_sprites()[SPRITE_SHEET].anim)
             all_sprites()[SPRITE_SHEET].anim = '\0';
         else
@@ -56,9 +57,9 @@ void level_game_animations(void)
         anim_all_enemies();
         find_all_particules_from_mg();
     }
-    if (!(all_infos()->clock_val % 2)) {
-        if (all_infos()->move_d || all_infos()->move_u ||
-            all_infos()->move_r || all_infos()->move_l) {
+    if (!(all_infos()->in->clock_val % 2)) {
+        if (all_infos()->bo->move_d || all_infos()->bo->move_u ||
+        all_infos()->bo->move_r || all_infos()->bo->move_l) {
             check_all_intecract_map_actual();
             move_pos_player();
         } else if (all_infos()->move != 'c') {

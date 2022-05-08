@@ -14,10 +14,12 @@ void display_hud(void)
     sfRectangleShape *rectan = sfRectangleShape_create();
     sfRectangleShape_setPosition(rectan, pos);
     sfRectangleShape_setFillColor(rectan, sfBlack);
-    sfRectangleShape_setSize(rectan, (sfVector2f){all_infos()->life_size, 15});
+    sfRectangleShape_setSize(rectan,
+    (sfVector2f){all_infos()->in->life_size, 15});
     sfRenderWindow_drawRectangleShape(all_infos()->window, rectan, NULL);
     sfRectangleShape_setFillColor(rectan, sfRed);
-    sfRectangleShape_setSize(rectan, (sfVector2f){all_infos()->life * 15, 15});
+    sfRectangleShape_setSize(rectan,
+    (sfVector2f){all_infos()->in->life * 15, 15});
     sfRenderWindow_drawRectangleShape(all_infos()->window, rectan, NULL);
     sfRectangleShape_destroy(rectan);
     sfSprite_setPosition(all_sprites()[LIFE].sprite, (sfVector2f){(1920 * 0.5)
@@ -34,7 +36,7 @@ void display_stamina(void)
     sfRectangleShape_setPosition(stamina, pos2);
     sfRectangleShape_setFillColor(stamina, sfBlack);
     sfRectangleShape_setSize(stamina,
-    (sfVector2f) {all_infos()->life_size, 15});
+    (sfVector2f) {all_infos()->in->life_size, 15});
     sfRenderWindow_drawRectangleShape(all_infos()->window, stamina, NULL);
     sfRectangleShape_setFillColor(stamina, sfGreen);
     sfRectangleShape_setSize(stamina,
@@ -46,15 +48,15 @@ void display_stamina(void)
 void level_game(sfEvent event)
 {
     event_level_game(event);
-    if (all_infos()->quit_main == 1) {
+    if (all_infos()->in->quit_main == 1) {
         close_sounds();
         write_infos_to_file();
         return;
     }
-    disp_map(all_maps()[all_infos()->map_actual].bg);
+    disp_map(all_maps()[all_infos()->in->map_actual].bg);
     disp_mg();
     play_sound();
-    disp_map(all_maps()[all_infos()->map_actual].fg);
+    disp_map(all_maps()[all_infos()->in->map_actual].fg);
     disp_all_npcs();
     disp_interaction_button();
     is_onchest();

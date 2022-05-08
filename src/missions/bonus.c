@@ -38,12 +38,12 @@ void event_level_bonus(void)
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtKeyPressed &&
         event.key.code == all_keys()->k_interact) {
-            all_infos()->text_char = 0;
+            all_infos()->in->text_char = 0;
             sfText_setString(all_texts()->code, "");
-            all_infos()->level = GAME;
+            all_infos()->in->level = GAME;
         }
         if (event.type == sfEvtClosed) {
-            all_infos()->quit_main = 1;
+            all_infos()->in->quit_main = 1;
             return;
         }
         get_typed_text(event);
@@ -54,10 +54,10 @@ void event_level_bonus(void)
 void level_bonus(void)
 {
     event_level_bonus();
-    disp_map(all_maps()[all_infos()->map_actual].bg);
+    disp_map(all_maps()[all_infos()->in->map_actual].bg);
     print_all_particules();
     disp_mg();
-    disp_map(all_maps()[all_infos()->map_actual].fg);
+    disp_map(all_maps()[all_infos()->in->map_actual].fg);
     disp_all_npcs();
     disp_interaction_button();
     sfRenderWindow_setView(all_infos()->window, all_infos()->hud_view);

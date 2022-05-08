@@ -73,7 +73,6 @@ void inicialize_sprite_option(tags *game)
 
 void initialize_options_game(tags *game)
 {
-    char *score;
     game->f_rects->frame30_button_b =
     sfSprite_getGlobalBounds(game->sprites->sframe);
     game->f_rects->frame30_button_b.width = 420;

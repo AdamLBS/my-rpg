@@ -28,14 +28,13 @@ void handle_map_actual(int *type, char *buffer)
 {
     if (*type != 3)
         return;
-    all_infos()->map_actual = my_getnbr(buffer);
+    all_infos()->in->map_actual = my_getnbr(buffer);
     *type = 0;
     return;
 }
 
 void handle_inventory(char *buffer, int *type)
 {
-    int nb = 0;
     if (*type != 4)
         return;
     add_to_inventory(&all_infos()->inventory, my_getnbr(buffer));

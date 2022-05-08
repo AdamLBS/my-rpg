@@ -30,10 +30,8 @@ void move_projectile(projectile_t *projectile)
 {
     projectile->sprite_picture.pos.x += projectile->velocity.x;
     projectile->sprite_picture.pos.y += projectile->velocity.y;
-
     check_hunter_collision(projectile);
     check_enemies_collision(projectile);
-
     /*if (collide_with_wall) {
         projectile->velocity.x = 0;
         projectile->velocity.y = 0;

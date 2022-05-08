@@ -19,7 +19,7 @@ void manage_mouse_click_level(tags *game)
         sfSprite_setTexture(all_sprites()[HUNTER].sprite,
         all_sprites()[HUNTER].texture, sfTrue);
         full_perso(HUNTER, 10 * 50, 10 * 35);
-        all_infos()->player_type = 1;
+        all_infos()->in->player_type = 1;
     }
     manage_mouse_click_level2(game);
     sfSprite_setScale(all_sprites()[HUNTER].sprite, (sfVector2f) {30, 30});
@@ -34,6 +34,6 @@ void manage_mouse_click_level2(tags *game)
         sfSprite_setTexture(all_sprites()[HUNTER].sprite,
         all_sprites()[HUNTER].texture, sfTrue);
         full_perso(HUNTER, 10 * 50, 10 * 35);
-        all_infos()->player_type = 2;
+        all_infos()->in->player_type = 2;
     }
 }

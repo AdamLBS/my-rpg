@@ -12,17 +12,17 @@ void event_level_game_relased_next (sfEvent event)
 {
     bow_release();
     if (!sfKeyboard_isKeyPressed(all_keys()->k_sprint))
-        all_infos()->sprint = false;
+        all_infos()->bo->sprint = false;
     if (!sfKeyboard_isKeyPressed(all_keys()->k_left))
-        all_infos()->move_l = false;
+        all_infos()->bo->move_l = false;
     if (!sfKeyboard_isKeyPressed(all_keys()->k_right))
-        all_infos()->move_r = false;
+        all_infos()->bo->move_r = false;
     if (!sfKeyboard_isKeyPressed(all_keys()->k_up))
-        all_infos()->move_u = false;
+        all_infos()->bo->move_u = false;
     if (!sfKeyboard_isKeyPressed(all_keys()->k_down))
-        all_infos()->move_d = false;
-    if (!all_infos()->move_u && !all_infos()->move_d &&
-    !all_infos()->move_l && !all_infos()->move_r)
+        all_infos()->bo->move_d = false;
+    if (!all_infos()->bo->move_u && !all_infos()->bo->move_d &&
+    !all_infos()->bo->move_l && !all_infos()->bo->move_r)
         all_infos()->move = '\0';
     sfSprite_setTextureRect(all_sprites()[HUNTER].sprite,
     all_sprites()[HUNTER].rect);
@@ -47,14 +47,14 @@ void event_level_game_relased(sfEvent event)
 
 void event_level_game(sfEvent event)
 {
-    if (!all_infos()->first_run && !all_infos()->save) {
+    if (!all_infos()->bo->first_run && !all_infos()->bo->save) {
         full_perso(HUNTER, all_infos()->pos_player.x,
         all_infos()->pos_player.y);
-        all_infos()->first_run = true;
+        all_infos()->bo->first_run = true;
     }
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtClosed) {
-            all_infos()->quit_main = 1;
+            all_infos()->in->quit_main = 1;
             return;
         }
         if (event.type == sfEvtKeyPressed)

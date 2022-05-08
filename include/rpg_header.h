@@ -416,6 +416,8 @@ void check_all_intecract_map_actual(void);
 
 void disp_mg(void);
 
+void reinitialize1(void);
+
 // disp map
 
 void disp_map(char **map);

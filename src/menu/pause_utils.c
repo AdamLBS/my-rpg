@@ -62,6 +62,7 @@ void set_menu(tags *game)
 {
     write_infos_to_file();
     full_perso(HUNTER, 10 * 50, 10 * 35);
+    reinitialize1();
     initialize_sprite_menu(game);
     initialize_bounds_menu(game);
     inicialize_variables_option(game);

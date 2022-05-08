@@ -42,16 +42,16 @@ void increase_health_and_stamina(int health, int stamina)
 {
     if (all_infos()->life + health <= all_infos()->life_size / 15)
         all_infos()->life += health;
-    else {
+    else if (all_infos()->life + 1 <= all_infos()->life_size / 15) {
         all_infos()->life += 1;
     }
     if (stamina == 1) {
-        all_infos()->stamina = 10;
+        all_infos()->stamina = all_infos()->life_size / 15;
         return;
     }
-    if (stamina == 2 && all_infos()->stamina < 5) {
-        all_infos()->stamina = 5;
-    } else if (all_infos()->stamina + 1 <= 10) {
+    if (stamina == 2 &&  (all_infos()->life_size / 15) / 2 < 5) {
+        all_infos()->stamina = (all_infos()->life_size / 15) / 2;
+    } else if (all_infos()->stamina + 1 <= all_infos()->life_size / 15) {
         all_infos()->stamina += 1;
     }
 }

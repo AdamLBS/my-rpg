@@ -22,7 +22,7 @@ void increase_stamina(void)
 {
     sfTime time = sfClock_getElapsedTime(all_infos()->stamina_clock);
     if (sfTime_asMilliseconds(time) > 1000) {
-        if (all_infos()->stamina < 10)
+        if (all_infos()->stamina < all_infos()->life_size / 15)
             all_infos()->stamina += 0.2;
         sfClock_restart(all_infos()->stamina_clock);
     }

@@ -78,9 +78,17 @@ void npc_check_quest_3(npcs *expl)
         if (all_infos()->doing_quest == true && all_infos()->quest_id == 14) {
             all_infos()->doing_quest = false;
             all_infos()->quest_id = 0;
-            increase_health_and_stamina(15, 15);
+            increase(15, 15);
             all_infos()->quest_done[my_strlen(all_infos()->quest_done)] = '2';
         }
         print_quest("Finally someone came!\nThanks for saving me!\n");
+    }
+    if (expl->value == 10 && expl->interaction == 1) {
+        if (all_infos()->nb_of_enemies_outside == 0) {
+            all_infos()->doing_quest = false;
+            all_infos()->quest_id = 0;
+            increase(15, 15);
+            all_infos()->quest_done[my_strlen(all_infos()->quest_done)] = '1';
+        }
     }
 }

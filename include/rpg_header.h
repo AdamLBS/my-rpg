@@ -216,6 +216,7 @@ typedef struct enemies {
     struct enemies *next;
     sfVector2f pos;
     int health_points;
+    int outside;
     int value;
     sfClock *clock;
     int radius;

@@ -31,6 +31,8 @@ void add_enemies_to_list(int map, int value, int x, int y)
     add_enemies_to_list_next(new_enemy, value, x, y);
     new_enemy->og_x = (new_enemy->pos.x / SIZE_TILE);
     new_enemy->og_y = (new_enemy->pos.y / SIZE_TILE);
+    if (map == 0)
+        new_enemy->outside = 1;
     if (all_maps()[map].all_ennemis == NULL) {
         all_maps()[map].all_ennemis = new_enemy;
         return;

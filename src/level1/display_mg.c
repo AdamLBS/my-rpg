@@ -29,11 +29,15 @@ void check_life(void)
     enemies *tmp = all_maps()[all_infos()->map_actual].all_ennemis;
     int i = 0;
     while (tmp) {
-        if (tmp->health_points <= 0)
+        if (tmp->health_points <= 0) {
+            if (tmp->outside == 1)
+                all_infos()->nb_of_enemies_outside--;
             delete_enemy(i);
+        }
         i++;
         tmp = tmp->next;
     }
+    printf("%d\n", all_infos()->nb_of_enemies_outside);
 }
 
 void disp_mg_next (int i)

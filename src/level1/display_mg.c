@@ -8,6 +8,34 @@
 #include "my.h"
 #include "rpg_header.h"
 
+void delete_enemy(int position)
+{
+    enemies **new_node = &all_maps()[all_infos()->map_actual].all_ennemis;
+    enemies *node = *new_node;
+    enemies *tmp = (node)->next;
+    if (position == 0) {
+        (*new_node) = (*new_node)->next;
+        return;
+    }
+    for (int i = 0; i < position - 1; i++) {
+        node = node->next;
+        tmp = tmp->next;
+    }
+    node->next = tmp->next;
+}
+
+void check_life(void)
+{
+    enemies *tmp = all_maps()[all_infos()->map_actual].all_ennemis;
+    int i = 0;
+    while (tmp) {
+        if (tmp->health_points <= 0)
+            delete_enemy(i);
+        i++;
+        tmp = tmp->next;
+    }
+}
+
 void disp_mg_next (int i)
 {
     enemies *enemies = all_maps()[all_infos()->map_actual].all_ennemis;
@@ -23,6 +51,7 @@ void disp_mg_next (int i)
         }
         enemies = enemies->next;
     }
+    check_life();
     if (all_sprites()[HUNTER].pos.y > (SIZE_TILE * i) +
     VALEURE_APPROXIMATIVE_POUR_PASSER_DERRIER_UNE_TUILE_EN_MG) {
         sfRenderWindow_drawSprite(all_infos()->window,

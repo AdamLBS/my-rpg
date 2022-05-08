@@ -17,6 +17,7 @@ void add_enemies_to_list_next(enemies *new_enemy, int value, int x, int y)
     new_enemy->clock = sfClock_create();
     new_enemy->radius = 5;
     new_enemy->move_type = 4;
+    new_enemy->health_points = 20;
     new_enemy->anim = 'a';
     new_enemy->rect.height = 16;
     new_enemy->rect.width = 16;

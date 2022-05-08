@@ -25,7 +25,7 @@ void get_typed_text(sfEvent event)
     }
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEnter) {
         if (my_strcmp(all_texts()->text, "niels grade B") == 0) {
-            increase(60, 5);
+            increase(60, 60);
             all_infos()->quest_done[my_strlen(all_infos()->quest_done)] = '3';
             all_texts()->text = my_strdup("Correct code!\n");
         }

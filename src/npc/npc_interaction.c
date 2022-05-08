@@ -71,7 +71,8 @@ void disp_interaction_button(void)
         sfSprite_getGlobalBounds(all_sprites()[HUNTER].sprite);
         sfFloatRect rect_npc =
         sfSprite_getGlobalBounds(all_sprites()[expl->value].sprite);
-        rect_npc.height = 60, rect_npc.width = 60;
+        rect_npc.height = 60;
+        rect_npc.width = 60;
         expl->interaction = 0;
         if (sfFloatRect_intersects(&rect_player, &rect_npc, NULL)) {
             expl->interaction = 1;

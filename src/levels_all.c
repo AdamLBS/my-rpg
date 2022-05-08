@@ -47,31 +47,10 @@ void game_loop(tags *game)
             level_menu(game, event);
         if (all_infos()->level == GAME)
             level_game(event);
-        if (all_infos()->level == MAP_EDITOR)
-            level_map_editor(event);
-        projectile_render_tick();
-        if (all_infos()->level == INVENTORY)
-            level_inventory(event);
-        if (all_infos()->level == DIALOGUE)
-            level_quest();
-        if (all_infos()->level == MISSIONS)
-            level_missions();
-        if (all_infos()->level == BONUS)
-            level_bonus();
-        if (all_infos()->level == CHEST)
-            chest_level();
-        if (all_infos()->level == OPTIONS)
-            level_option(game);
-        if (all_infos()->level == CHOSE_NPC)
-            level_selection(game);
-        if (all_infos()->level == STORY)
-            story();
-        if (all_infos()->level == PAUSE_GAME)
-            level_pause(game);
-        if (all_infos()->level == END)
-            level_end(game);
         if (all_infos()->quit_main)
             return;
+        game_loop2(game, event);
+        projectile_render_tick();
         check_win_lose();
         sfRenderWindow_display(all_infos()->window);
     }

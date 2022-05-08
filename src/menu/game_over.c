@@ -38,22 +38,17 @@ void mouse_position_end_game(tags *game)
     sfMouse_getPositionRenderWindow(all_infos()->window);
     if (sfFloatRect_contains(&game->f_rects->menu_button_b,
     all_infos()->mouse_position.x, all_infos()->mouse_position.y)) {
-        game->text->trestart = create_texture("pictures/menu_buttons/Menu2.png");
+        game->text->trestart =
+        create_texture("pictures/menu_buttons/Menu2.png");
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
     } else {
-        game->text->trestart = create_texture("pictures/menu_buttons/Menu.png");
+        game->text->trestart =
+        create_texture("pictures/menu_buttons/Menu.png");
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
     }
-    if (sfFloatRect_contains(&game->f_rects->quit_button_b,
-    all_infos()->mouse_position.x, all_infos()->mouse_position.y)) {
-        game->text->tquit = create_texture("pictures/menu_buttons/Quit2.png");
-        sfSprite_setTexture(game->sprites->squit, game->text->tquit, sfTrue);
-    } else {
-        game->text->tquit = create_texture("pictures/menu_buttons/Quit.png");
-        sfSprite_setTexture(game->sprites->squit, game->text->tquit, sfTrue);
-    }
+    utils_gameover(game);
 }
 
 void render_end_game(tags *game)

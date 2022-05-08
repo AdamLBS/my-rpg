@@ -919,3 +919,9 @@ void event_level_game(sfEvent event);
 void event_level_game_pressed_next(sfEvent event);
 
 void event_level_game_pressed(sfEvent event);
+
+void utils_gameover(tags *game);
+
+void game_loop2(tags *game, sfEvent event);
+
+void game_loop3(tags *game, sfEvent event);

@@ -36,6 +36,7 @@
 #define END 10
 #define CHOSE_NPC 11
 #define STORY 12
+#define PAUSE_GAME 13
 
 #define BUFF_SIZE 512
 
@@ -425,11 +426,21 @@ void check_all_intecract_map_actual(void);
 
 void disp_mg(void);
 
+void reinitialize1(void);
+
 // disp map
 
 void disp_map(char **map);
 
 void level_selection(tags *game);
+
+void level_pause(tags *game);
+
+void mouse_position_pause(tags *game);
+
+void render_pause(tags *game);
+
+void manage_mouse_click_pause_game(tags *game);
 
 // level 1 anim enemis
 

@@ -24,6 +24,7 @@ void manage_click_welcome_util(tags *game)
         sfSprite_setTexture(game->sprites->sscoreboard,
         game->text->tscoreboard, sfTrue);
         all_infos()->save = true;
+        sfView_setSize(all_infos()->view, (sfVector2f) {1920 / 2, 1080 / 2});
         all_infos()->level = 1;
     }
 }

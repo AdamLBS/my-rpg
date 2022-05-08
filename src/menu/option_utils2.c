@@ -10,6 +10,8 @@
 
 void manage_mouse_click_util_2(tags *game)
 {
+    all_infos()->mouse_click =
+    sfMouse_getPositionRenderWindow(all_infos()->window);
     if (sfFloatRect_contains(&game->f_rects->sound_button_b,
     all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
         if (game->f_rects->sound == 0) {
@@ -22,8 +24,9 @@ void manage_mouse_click_util_2(tags *game)
             sfSound_setVolume(all_infos()->sounds->stone, 0.0);
             sfSound_setVolume(all_infos()->sounds->wood, 0.0);
             game->f_rects->sound = 1;
+        } else {
+            manage_mouse_click_util_3(game);
         }
-        manage_mouse_click_util_3(game);
     }
 }
 

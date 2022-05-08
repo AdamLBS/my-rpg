@@ -108,6 +108,8 @@ struct texture {
     sfTexture *tframe2;
     sfTexture *tresume;
     sfTexture *teditor;
+    sfTexture *tkey;
+    sfTexture *tkey2;
 } typedef t_text;
 
 struct sprites {
@@ -123,7 +125,8 @@ struct sprites {
     sfSprite *sresume;
     sfSprite *seditor;
     sfSprite *ssound;
-    sfSprite *skeyboard;
+    sfSprite *skey;
+    sfSprite *skey2;
 } typedef t_sprites;
 
 struct float_rect {

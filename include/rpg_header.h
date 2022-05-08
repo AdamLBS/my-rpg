@@ -419,6 +419,8 @@ sprite_pictures *all_sprites(void);
 
 void move_to_map(int map, int x, int y);
 
+void azerty_keyes(void);
+
 int player_is_on_case(int x, int y);
 
 void check_all_intecract_map_actual(void);

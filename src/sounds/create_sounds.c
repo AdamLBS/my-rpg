@@ -16,6 +16,10 @@ void create_sounds(void)
     sounds->stone = create_sound("music/stone_walk.ogg");
     sounds->wood = create_sound("music/wood_walk.ogg");
     sounds->open_chest = create_sound("music/open_chest.ogg");
+    sounds->music = sfMusic_createFromFile("music/main_theme.ogg");
+    sfMusic_setVolume(sounds->music, 20);
+    sfMusic_setLoop(sounds->music, sfTrue);
+    sfMusic_play(sounds->music);
 }
 
 void play_sound(void)

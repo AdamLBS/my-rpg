@@ -10,6 +10,7 @@
 
 void is_onchest(void)
 {
+    manage_music();
     int final_x = (all_sprites()[HUNTER].pos.x) / (SIZE_TILE);
     int final_y = (all_sprites()[HUNTER].pos.y) / (SIZE_TILE);
     if (!all_maps()[all_infos()->in->map_actual].mg[final_y])

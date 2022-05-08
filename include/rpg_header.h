@@ -164,6 +164,7 @@ struct sounds {
     sfSound *grass;
     sfSound *wood;
     sfSound *open_chest;
+    sfMusic *music;
 } typedef t_sounds;
 
 typedef struct sprite_pictures {
@@ -937,3 +938,5 @@ void origin_in_8_8_scale(int sprite);
 struct_interact *interactions_of_map(char *str, struct_maps autr);
 
 void add_npcs_to_list(int map, int value, int x, int y);
+
+void manage_music(void);

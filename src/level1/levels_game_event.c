@@ -11,14 +11,14 @@
 void change_scale(sfEvent event)
 {
     if (event.key.code == all_keys()->zoom_out &&
-    all_infos()->nb_of_zoom + 1 != 4) {
+    all_infos()->in->nb_of_zoom + 1 != 4) {
         sfView_zoom(all_infos()->view, 0.8);
-        all_infos()->nb_of_zoom += 1;
+        all_infos()->in->nb_of_zoom += 1;
     }
     if (event.key.code == all_keys()->zoom_in &&
-    all_infos()->nb_of_zoom - 1 > 0) {
+    all_infos()->in->nb_of_zoom - 1 > 0) {
         sfView_zoom(all_infos()->view, 1.2);
-        all_infos()->nb_of_zoom -= 1;
+        all_infos()->in->nb_of_zoom -= 1;
     }
     sfRenderWindow_setView(all_infos()->window, all_infos()->view);
 }
@@ -26,26 +26,26 @@ void change_scale(sfEvent event)
 void event_level_game_pressed_next(sfEvent event)
 {
     if (event.key.code == all_keys()->k_sprint)
-        all_infos()->sprint = true;
+        all_infos()->bo->sprint = true;
     if (event.key.code == all_keys()->k_up)
-        all_infos()->move_u = true;
+        all_infos()->bo->move_u = true;
     if (event.key.code == all_keys()->k_left)
-        all_infos()->move_l = true;
+        all_infos()->bo->move_l = true;
     if (event.key.code == all_keys()->k_down)
-        all_infos()->move_d = true;
+        all_infos()->bo->move_d = true;
     if (event.key.code == all_keys()->k_right)
-        all_infos()->move_r = true;
+        all_infos()->bo->move_r = true;
     if (event.key.code == all_keys()->k_open_bag)
-        all_infos()->level = INVENTORY;
+        all_infos()->in->level = INVENTORY;
     check_stamina();
 }
 
 void event_npc(sfEvent event)
 {
-    npcs *npcs = all_maps()[all_infos()->map_actual].all_npcs;
+    npcs *npcs = all_maps()[all_infos()->in->map_actual].all_npcs;
     while (npcs) {
         if (event.key.code == sfKeyF && npcs->interaction == 1)
-            all_infos()->level = DIALOGUE;
+            all_infos()->in->level = DIALOGUE;
         npcs = npcs->next;
     }
 }
@@ -53,14 +53,14 @@ void event_npc(sfEvent event)
 void event_level_mission_pressed(sfEvent event)
 {
     if (event.key.code == all_keys()->k_open_missions)
-        all_infos()->level = MISSIONS;
+        all_infos()->in->level = MISSIONS;
 }
 
 void event_level_game_pressed(sfEvent event)
 {
     if (event.key.code == all_keys()->shoot) {
-        all_infos()->loading_bow = true;
-        all_infos()->charging_ticks++;
+        all_infos()->bo->loading_bow = true;
+        all_infos()->in->charging_ticks++;
         all_infos()->move = 'c';
         if (all_sprites()[HUNTER].rect.top == 16 ||
         all_sprites()[HUNTER].rect.top == 2 * 16) {
@@ -71,7 +71,7 @@ void event_level_game_pressed(sfEvent event)
         all_sprites()[HUNTER].rect.left = 16 * 3;
     }
     if (event.key.code == sfKeyEscape)
-        all_infos()->level = PAUSE_GAME;
+        all_infos()->in->level = PAUSE_GAME;
     event_level_game_pressed_next(event);
     change_scale(event);
     event_npc(event);

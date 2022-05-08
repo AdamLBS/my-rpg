@@ -10,7 +10,7 @@
 
 void pick_inventorybox(int x, int y, int run)
 {
-    if (run == all_infos()->inventory_move) {
+    if (run == all_infos()->in->inventory_move) {
         sfSprite_setPosition(all_sprites()[SELEC_BOX].sprite,
         (sfVector2f) {(x * SIZE_TILE) + 50, (y * SIZE_TILE) + 250});
         sfRenderWindow_drawSprite(all_infos()->window,
@@ -26,19 +26,19 @@ void pick_inventorybox(int x, int y, int run)
 
 void change_val_box(int val)
 {
-    if (val == 1 && all_infos()->inventory_move + 1 < nmb_inv()) {
-        all_infos()->inventory_move += 1;
+    if (val == 1 && all_infos()->in->inventory_move + 1 < nmb_inv()) {
+        all_infos()->in->inventory_move += 1;
         return;
     }
-    if (val == 2 && all_infos()->inventory_move - 1 >= 0) {
-        all_infos()->inventory_move -= 1;
+    if (val == 2 && all_infos()->in->inventory_move - 1 >= 0) {
+        all_infos()->in->inventory_move -= 1;
         return;
     }
 }
 
 void print_infos(int run, struct_inventory *obj, int x, int y)
 {
-    if (run != all_infos()->inventory_move)
+    if (run != all_infos()->in->inventory_move)
         return;
     all_sprites()[obj->object].scale.x = 5.125;
     all_sprites()[obj->object].scale.y = 5.125;

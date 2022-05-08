@@ -22,10 +22,10 @@ void play_sound(void)
 {
     int curent_x = (all_sprites()[HUNTER].pos.x) / (SIZE_TILE);
     int current_y = (all_sprites()[HUNTER].pos.y) / (SIZE_TILE);
-    if (!all_maps()[all_infos()->map_actual].bg[current_y])
+    if (!all_maps()[all_infos()->in->map_actual].bg[current_y])
         return;
-    char bg = all_maps()[all_infos()->map_actual].bg[current_y][curent_x];
-    char mg = all_maps()[all_infos()->map_actual].mg[current_y][curent_x];
+    char bg = all_maps()[all_infos()->in->map_actual].bg[current_y][curent_x];
+    char mg = all_maps()[all_infos()->in->map_actual].mg[current_y][curent_x];
     stop_all_sounds(bg, mg);
 }
 

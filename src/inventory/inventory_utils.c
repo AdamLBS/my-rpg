@@ -18,7 +18,7 @@ void inventory_utils_event(sfEvent event)
             change_val_box(2);
     if (event.type == sfEvtClosed) {
         write_infos_to_file();
-        all_infos()->quit_main = 1;
+        all_infos()->in->quit_main = 1;
         return;
     }
 }

@@ -12,14 +12,15 @@ int can_move(int x, int y)
 {
     int final_x = (all_sprites()[HUNTER].pos.x + x) / (SIZE_TILE);
     int final_y = (all_sprites()[HUNTER].pos.y + y) / (SIZE_TILE);
-    if (all_maps()[all_infos()->map_actual].mg[final_y] == NULL)
+    if (all_maps()[all_infos()->in->map_actual].mg[final_y] == NULL)
         return 1;
     if (final_y < 0 || final_x < 0)
         return 0;
-    if (final_y > my_arraylen(all_maps()[all_infos()->map_actual].mg))
+    if (final_y > my_arraylen(all_maps()[all_infos()->in->map_actual].mg))
         return 0;
-    if (!is_movable(all_maps()[all_infos()->map_actual].mg[final_y][final_x],
-    all_maps()[all_infos()->map_actual].bg[final_y][final_x])) {
+    if (!is_movable(all_maps()[all_infos()->in->map_actual].
+    mg[final_y][final_x],
+    all_maps()[all_infos()->in->map_actual].bg[final_y][final_x])) {
         return 0;
     }
     return 1;

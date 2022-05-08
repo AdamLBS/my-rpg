@@ -17,41 +17,41 @@ main_screen *all_infos(void)
 
 void main_vals_utils(void)
 {
-    infos->move_u = false;
-    infos->move_d = false;
-    infos->move_l = false;
-    infos->move_r = false;
-    infos->life_size = 150;
-    infos->doing_quest = false;
+    infos->bo->move_u = false;
+    infos->bo->move_d = false;
+    infos->bo->move_l = false;
+    infos->bo->move_r = false;
+    infos->in->life_size = 150;
+    infos->bo->doing_quest = false;
     infos->clock = sfClock_create();
-    infos->player_type = 0;
+    infos->in->player_type = 0;
     infos->zoom = 1;
     infos->move = '\0';
-    infos->life = 10;
+    infos->in->life = 10;
     infos->stamina = 10;
-    infos->opened_chest = false;
+    infos->bo->opened_chest = false;
     infos->quest_done[0] = '\0';
     infos->quest_done[1] = '\0';
     infos->quest_done[2] = '\0';
-    all_infos()->banana_nb = 0;
-    all_infos()->apple_nb = 0;
+    all_infos()->in->banana_nb = 0;
+    all_infos()->in->apple_nb = 0;
 }
 
 void initialize_main_vals(void)
 {
     main_vals_utils();
-    infos->level = 0;
-    infos->ennemy_id = 0;
-    infos->quit_main = 0;
-    infos->clock_val = 0;
+    infos->in->level = 0;
+    infos->in->ennemy_id = 0;
+    infos->in->quit_main = 0;
+    infos->in->clock_val = 0;
     infos->particules = NULL;
     infos->view_position.x = 960;
-    infos->inventory_move = 0;
+    infos->in->inventory_move = 0;
     infos->view_position.y = 540;
     infos->view = sfView_create();
     infos->hud_view = sfView_create();
-    infos->quest_id = 0;
-    infos->nb_of_enemies_outside = 0;
+    infos->in->quest_id = 0;
+    infos->in->nb_of_enemies_outside = 0;
     sfView_setCenter(infos->hud_view, (sfVector2f) {1920 / 2, 1080 / 2});
     sfView_setSize(infos->hud_view, (sfVector2f) {1920, 1080});
     sfRenderWindow_setView(infos->window, infos->hud_view);
@@ -79,21 +79,23 @@ void add_to_inventory (struct_inventory **list, int value)
 void create_main(void)
 {
     infos = malloc(sizeof(main_screen));
+    infos->bo = malloc(sizeof(t_bo));
+    infos->in = malloc(sizeof(t_in));
     create_sounds();
     sfVideoMode mode = {SCREEN_MAX_X, SCREEN_MAX_Y, 60};
     infos->window = sfRenderWindow_create(mode, "RPG",
     sfResize | sfClose, NULL);
-    infos->map_actual = 0;
+    infos->in->map_actual = 0;
     infos->pos_player.x = 500;
     infos->pos_player.y = 350;
-    infos->first_run = false;
-    infos->save = false;
-    infos->nb_of_zoom = 1;
+    infos->bo->first_run = false;
+    infos->bo->save = false;
+    infos->in->nb_of_zoom = 1;
     struct_inventory *val = NULL;
     infos->inventory = val;
     all_infos()->stamina_clock = sfClock_create();
     all_infos()->text_clock = sfClock_create();
-    all_infos()->text_char = 0;
+    all_infos()->in->text_char = 0;
     initialize_main_vals();
     return;
 }

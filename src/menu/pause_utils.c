@@ -46,7 +46,7 @@ void manage_mouse_click_pause_game_2(tags *game)
         game->text->tquit = create_texture("pictures/menu_buttons/Quit3.png");
         sfSprite_setTexture(game->sprites->squit, game->text->tquit, sfTrue);
         write_infos_to_file();
-        all_infos()->quit_main = 1;
+        all_infos()->in->quit_main = 1;
     }
 }
 
@@ -60,7 +60,7 @@ void set_menu(tags *game)
     inicialize_variables_option(game);
     inicialize_sprite_option(game);
     initialize_options_game(game);
-    all_infos()->level = 0;
+    all_infos()->in->level = 0;
 }
 
 void manage_mouse_click_pause_game(tags *game)
@@ -80,7 +80,7 @@ void manage_mouse_click_pause_game(tags *game)
         game->text->tstart =
         create_texture("pictures/menu_buttons/Resume3.png");
         sfSprite_setTexture(game->sprites->sstart, game->text->tstart, sfTrue);
-        all_infos()->level = GAME;
+        all_infos()->in->level = GAME;
     }
     manage_mouse_click_pause_game_2(game);
     render_pause(game);

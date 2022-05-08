@@ -10,8 +10,8 @@
 
 int is_moving(void)
 {
-    if (all_infos()->move_d || all_infos()->move_l
-    || all_infos()->move_r || all_infos()->move_u) {
+    if (all_infos()->bo->move_d || all_infos()->bo->move_l
+    || all_infos()->bo->move_r || all_infos()->bo->move_u) {
         return 1;
     }
     return 0;

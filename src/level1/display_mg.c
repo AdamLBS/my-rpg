@@ -10,7 +10,7 @@
 
 void delete_enemy(int position)
 {
-    enemies **new_node = &all_maps()[all_infos()->map_actual].all_ennemis;
+    enemies **new_node = &all_maps()[all_infos()->in->map_actual].all_ennemis;
     enemies *node = *new_node;
     enemies *tmp = (node)->next;
     if (position == 0) {
@@ -26,12 +26,12 @@ void delete_enemy(int position)
 
 void check_life(void)
 {
-    enemies *tmp = all_maps()[all_infos()->map_actual].all_ennemis;
+    enemies *tmp = all_maps()[all_infos()->in->map_actual].all_ennemis;
     int i = 0;
     while (tmp) {
         if (tmp->health_points <= 0) {
             if (tmp->outside == 1)
-                all_infos()->nb_of_enemies_outside--;
+            all_infos()->in->nb_of_enemies_outside--;
             delete_enemy(i);
         }
         i++;
@@ -41,7 +41,7 @@ void check_life(void)
 
 void disp_mg_next (int i)
 {
-    enemies *enemies = all_maps()[all_infos()->map_actual].all_ennemis;
+    enemies *enemies = all_maps()[all_infos()->in->map_actual].all_ennemis;
     while (enemies) {
         if (!enemies->printed && enemies->pos.y > (SIZE_TILE * i) + 16) {
             sfSprite_setPosition(all_sprites()[enemies->value].sprite,
@@ -64,35 +64,35 @@ void disp_mg_next (int i)
 
 void disp_priorit(int i)
 {
-    for (int j = 0; all_maps()[all_infos()->map_actual].mg[i][j]; j++) {
-        char a = all_maps()[all_infos()->map_actual].mg[i][j];
-        if (all_maps()[all_infos()->map_actual].is_printed[i][j] == 'N' &&
+    for (int j = 0; all_maps()[all_infos()->in->map_actual].mg[i][j]; j++) {
+        char a = all_maps()[all_infos()->in->map_actual].mg[i][j];
+        if (all_maps()[all_infos()->in->map_actual].is_printed[i][j] == 'N' &&
         ((a >= 'r' && a <= 't') || (a >= 'l' && a <= 'n'))) {
-            disp_map_next(all_maps()[all_infos()->map_actual].mg, i, j);
-            all_maps()[all_infos()->map_actual].is_printed[i][j] = 'Y';
+            disp_map_next(all_maps()[all_infos()->in->map_actual].mg, i, j);
+            all_maps()[all_infos()->in->map_actual].is_printed[i][j] = 'Y';
         }
     }
 }
 
 void disp_mg (void)
 {
-    enemies *expl = all_maps()[all_infos()->map_actual].all_ennemis;
+    enemies *expl = all_maps()[all_infos()->in->map_actual].all_ennemis;
     while (expl) {
         expl->printed = false;
         expl = expl->next;
     }
-    for (int i = 0; all_maps()[all_infos()->map_actual].mg[i]; i++)
-        for (int j = 0; all_maps()[all_infos()->map_actual].mg[i][j]; j++)
-            all_maps()[all_infos()->map_actual].is_printed[i][j] = 'N';
-    for (int i = 0; all_maps()[all_infos()->map_actual].mg[i]; i++)
+    for (int i = 0; all_maps()[all_infos()->in->map_actual].mg[i]; i++)
+        for (int j = 0; all_maps()[all_infos()->in->map_actual].mg[i][j]; j++)
+            all_maps()[all_infos()->in->map_actual].is_printed[i][j] = 'N';
+    for (int i = 0; all_maps()[all_infos()->in->map_actual].mg[i]; i++)
         disp_priorit(i);
     print_all_particules();
-    for (int i = 0; all_maps()[all_infos()->map_actual].mg[i]; i++) {
-        for (int j = 0; all_maps()[all_infos()->map_actual].mg[i][j]; j++) {
-            if (all_maps()[all_infos()->map_actual].is_printed[i][j] == 'N') {
-                disp_map_next(all_maps()[all_infos()->map_actual].mg, i, j);
-            }
-        }
+    for (int i = 0; all_maps()[all_infos()->in->map_actual].mg[i]; i++) {
+        for (int j = 0; all_maps()[all_infos()->in->map_actual].mg[i][j]; j++)
+            if (all_maps()[all_infos()->in->map_actual].
+            is_printed[i][j] == 'N')
+                disp_map_next(all_maps()[all_infos()->in->map_actual].mg,
+                i, j);
         disp_mg_next(i);
     }
 }

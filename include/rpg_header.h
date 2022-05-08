@@ -295,27 +295,9 @@ typedef struct editor_screen {
     bool v_fg;
 } editor_screen;
 
-typedef struct main_screen {
-    // window
-    sfRenderWindow* window;
-    int level;
-    int frame_rate;
-    int quit_main;
-    sfClock *clock;
-    int clock_val;
-    struct_inventory *inventory;
-    int map_actual;
-    sfVector2f pos_player;
-    int life;
-    float stamina;
+typedef struct our_bools {
     bool loading_bow;
-    int charging_ticks;
-    char move;
-    int quest_id;
-    int entering_password;
     bool doing_quest;
-    char quest_done[3];
-    int nb_of_enemies_outside;
     bool move_u;
     bool move_d;
     bool move_r;
@@ -326,33 +308,52 @@ typedef struct main_screen {
     bool opened_chest;
     bool first_run;
     bool save;
+} t_bo;
+
+typedef struct our_ints {
+    int level;
+    int frame_rate;
+    int quit_main;
+    int clock_val;
+    int map_actual;
+    int life;
+    int nb_of_enemies_outside;
     int nb_of_zoom;
     int banana_nb;
     int apple_nb;
+    int charging_ticks;
+    int quest_id;
+    int entering_password;
+    int inventory_move;
+    int ennemy_id;
+    int life_size;
+    int text_char;
+    int killed_ennemys;
+    int player_type;
+} t_in;
+
+typedef struct main_screen {
+    t_bo *bo;
+    t_in *in;
+    sfRenderWindow* window;
+    sfClock *clock;
+    struct_inventory *inventory;
+    sfVector2f pos_player;
+    float stamina;
+    char move;
+    char quest_done[3];
     sfClock *stamina_clock;
     sfClock *text_clock;
-    int text_char;
     char last_move;
     float zoom;
     t_sounds *sounds;
     sfVector2f view_position;
     sfVector2u size_window;
-    int inventory_move;
-    int ennemy_id;
-    int life_size;
     sfVector2i mouse_position;
     sfVector2i mouse_click;
-    // particules :
     struct_particule *particules;
-    int killed_ennemys;
-    int player_type;
-    //view
     sfView *view;
     sfView *hud_view;
-    // sound
-    sfMusic *music;
-    sfSoundBuffer *click_sound_buffer;
-    sfSound *click_sound;
 } main_screen;
 
 // * ////////////// CREATE DIR //////////////////////////////////////////
@@ -681,6 +682,7 @@ void level_0(sfEvent event);
 
 int start_game(int ac, char **av);
 
+void start_game_loop(void);
 // open file
 
 char **filepath_to_arr(char *filepath);
@@ -761,7 +763,7 @@ void handle_player_pos(char *buffer, int *type, int run);
 
 sfVector2f handle_view_pos(char *buffer, int *type, int run, sfVector2f pos);
 
-int get_info_save(void);
+void get_info_save(void);
 
 void save_map_actual(FILE *fd);
 
@@ -926,3 +928,9 @@ void utils_gameover(tags *game);
 void game_loop2(tags *game, sfEvent event);
 
 void game_loop3(tags *game, sfEvent event);
+
+void origin_in_8_8_scale(int sprite);
+
+struct_interact *interactions_of_map(char *str, struct_maps autr);
+
+void add_npcs_to_list(int map, int value, int x, int y);

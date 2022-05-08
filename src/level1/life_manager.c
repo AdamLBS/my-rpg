@@ -10,5 +10,5 @@
 
 void increase(int health, int stamina)
 {
-    all_infos()->life_size += health;
+    all_infos()->in->life_size += health;
 }

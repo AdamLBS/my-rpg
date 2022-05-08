@@ -8,11 +8,6 @@
 #include "my.h"
 #include "rpg_header.h"
 
-// on png
-// A-B-C-A-D-E
-// on code
-// a-b-c-A-B-C
-// not F
 void anim_perso_left_right_next (void)
 {
     if (all_sprites()[HUNTER].anim == 'A') {
@@ -48,7 +43,6 @@ void anim_perso_left_right (void)
     anim_perso_left_right_next();
 }
 
-// a-b-A-B
 void anim_perso_up_and_down_next (void)
 {
     if (all_sprites()[HUNTER].anim == 'B') {

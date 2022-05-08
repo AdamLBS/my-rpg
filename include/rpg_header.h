@@ -296,7 +296,6 @@ typedef struct editor_screen {
 } editor_screen;
 
 typedef struct main_screen {
-    // window
     sfRenderWindow* window;
     int level;
     int frame_rate;

@@ -65,6 +65,8 @@ void render_end_game(tags *game)
     game->sprites->srestart, NULL);
     sfRenderWindow_drawSprite(all_infos()->window,
     game->sprites->squit, NULL);
+    sfRenderWindow_drawText(all_infos()->window,
+    all_texts()->simple_text, NULL);
     sfRenderWindow_display(all_infos()->window);
 }
 
@@ -84,6 +86,8 @@ void inicialize_sprite_end_game(tags *game)
     sfSprite_setTexture(game->sprites->squit, game->text->tquit, sfTrue);
     sfSprite_setScale(game->sprites->squit, (sfVector2f) {1.3, 1.3});
     sfSprite_setPosition(game->sprites->squit, (sfVector2f) {740, 460});
+    sfText_setString(all_texts()->simple_text, "YOU ARE DEAD!");
+    sfText_setPosition(all_texts()->simple_text, (sfVector2f) {670, 120});
 }
 
 void level_end(tags *game)

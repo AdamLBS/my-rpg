@@ -25,6 +25,7 @@ void get_typed_text(sfEvent event)
     }
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEnter) {
         if (my_strcmp(all_texts()->text, "niels grade B") == 0) {
+            increase(60, 5);
             all_infos()->quest_done[my_strlen(all_infos()->quest_done)] = '3';
             all_texts()->text = my_strdup("Correct code!\n");
         }
@@ -53,7 +54,7 @@ void event_level_bonus(void)
 void level_bonus(void)
 {
     event_level_bonus();
-        disp_map(all_maps()[all_infos()->map_actual].bg);
+    disp_map(all_maps()[all_infos()->map_actual].bg);
     print_all_particules();
     disp_mg();
     disp_map(all_maps()[all_infos()->map_actual].fg);

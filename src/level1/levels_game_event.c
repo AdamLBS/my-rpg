@@ -37,11 +37,6 @@ void event_level_game_pressed_next(sfEvent event)
         all_infos()->move_r = true;
     if (event.key.code == all_keys()->k_open_bag)
         all_infos()->level = INVENTORY;
-    if (event.key.code == sfKeyP)
-        all_infos()->life--;
-    if (event.key.code == sfKeyM) {
-        increase_life();
-    }
     check_stamina();
 }
 

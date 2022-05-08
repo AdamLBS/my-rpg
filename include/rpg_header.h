@@ -815,7 +815,7 @@ void save_quests_id(FILE *fd);
 
 void restore_quests_done(char *buffer, int *type);
 
-void increase_life(void);
+void increase(int health, int stamina);
 
 void create_sounds(void);
 

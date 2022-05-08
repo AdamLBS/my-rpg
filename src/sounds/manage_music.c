@@ -15,6 +15,9 @@ void manage_music(void)
         sfMusic_stop(sounds->music);
         return;
     }
+    sfSoundStatus status = sfMusic_getStatus(sounds->music);
+    if (status == sfStopped)
+        sfMusic_play(sounds->music);
     if (all_infos()->in->level != GAME)
         sfMusic_setVolume(sounds->music, 2);
     else

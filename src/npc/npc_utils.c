@@ -72,7 +72,7 @@ void print_quest(char *text)
     all_texts()->simple_text, NULL);
 }
 
-void npc_check_quest_3(npcs *expl)
+void npc_check_quest_3(npcs *expl, char *text)
 {
     if (expl->value == 17 && expl->interaction == 1) {
         if (all_infos()->bo->doing_quest == true &&
@@ -92,4 +92,5 @@ void npc_check_quest_3(npcs *expl)
             all_infos()->quest_done[my_strlen(all_infos()->quest_done)] = '1';
         }
     }
+    npc_check_quest_4(expl, text);
 }

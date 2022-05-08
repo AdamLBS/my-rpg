@@ -817,8 +817,6 @@ void event_level_quest(void);
 
 void print_quest(char *text);
 
-void npc_check_quest_3(npcs *expl);
-
 void on_clock_update(void);
 
 void move_pos_player_utils(char a);
@@ -856,3 +854,7 @@ struct_interact *interactions_of_map(char *str, struct_maps autr);
 void add_npcs_to_list(int map, int value, int x, int y);
 
 void manage_music(void);
+
+void npc_check_quest_4(npcs *expl, char *text);
+
+void npc_check_quest_3(npcs *expl, char *text);

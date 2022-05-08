@@ -76,5 +76,6 @@ void manage_mouse_click_util_3(tags *game)
         sfSound_setVolume(all_infos()->sounds->stone, 10.0);
         sfSound_setVolume(all_infos()->sounds->wood, 10.0);
         game->f_rects->sound = 0;
+        all_infos()->bo->music = true;
     }
 }

@@ -27,7 +27,7 @@ void npc_check_quest_2(npcs *expl, char *text)
             print_quest("You are already in a quest...\nCome back later!\n");
         }
     }
-    npc_check_quest_3(expl);
+    npc_check_quest_3(expl, text);
 }
 
 void npc_check_quest(npcs *expl, char *text)
@@ -48,16 +48,6 @@ void npc_check_quest(npcs *expl, char *text)
         } else {
             print_quest("You are already in a quest...\nCome back later!\n");
         }
-    }
-    if (expl->value == 12 && expl->interaction == 1) {
-        if (check_if_mission_was_done('3') == true) {
-            print_quest("Password already done!\n");
-            return;
-        }
-        text = my_strcpy(text, "Do you have the password?\nPress");
-        text = my_strcat(text, " Y for 'yes' and N for 'no'\n");
-        print_quest(text);
-        all_infos()->in->entering_password = 1;
     }
     npc_check_quest_2(expl, text);
 }
@@ -81,8 +71,7 @@ void disp_interaction_button(void)
         sfSprite_getGlobalBounds(all_sprites()[HUNTER].sprite);
         sfFloatRect rect_npc =
         sfSprite_getGlobalBounds(all_sprites()[expl->value].sprite);
-        rect_npc.height = 60;
-        rect_npc.width = 60;
+        rect_npc.height = 60, rect_npc.width = 60;
         expl->interaction = 0;
         if (sfFloatRect_intersects(&rect_player, &rect_npc, NULL)) {
             expl->interaction = 1;

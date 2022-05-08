@@ -428,6 +428,22 @@ void disp_mg(void);
 
 void reinitialize1(void);
 
+void set_menu(tags *game);
+
+void level_end(tags *game);
+
+void inicialize_sprite_end_game(tags *game);
+
+void render_end_game(tags *game);
+
+void mouse_position_end_game(tags *game);
+
+void manage_mouse_click_end_game(tags *game);
+
+void initialize_bounds_end_game(tags *game);
+
+void analyse_events_end_game(tags *game);
+
 // disp map
 
 void disp_map(char **map);

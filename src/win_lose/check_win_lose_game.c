@@ -19,4 +19,6 @@ void check_win_lose(void)
     }
     if (q1 == 1 && q2 == 1)
         all_infos()->level = END;
+    if (all_infos()->life <= 0)
+        all_infos()->level = END;
 }

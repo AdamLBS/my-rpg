@@ -25,17 +25,20 @@ void clamp_velocity(projectile_t *projectile)
     }
 }
 
-// TODO: collision with walls?
 void move_projectile(projectile_t *projectile)
 {
     projectile->sprite_picture.pos.x += projectile->velocity.x;
     projectile->sprite_picture.pos.y += projectile->velocity.y;
     check_hunter_collision(projectile);
     check_enemies_collision(projectile);
-    /*if (collide_with_wall) {
+    int final_x = (projectile->sprite_picture.pos.x) / (SIZE_TILE);
+    int final_y = (projectile->sprite_picture.pos.y) / (SIZE_TILE);
+    if (!is_movable(all_maps()[all_infos()->in->map_actual].
+    mg[final_y][final_x],
+    all_maps()[all_infos()->in->map_actual].bg[final_y][final_x])) {
         projectile->velocity.x = 0;
         projectile->velocity.y = 0;
-    }*/
+    }
 }
 
 void projectile_game_tick(void)

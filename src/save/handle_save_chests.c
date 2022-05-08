@@ -12,7 +12,6 @@ void handle_save_chests(char *buffer, int *type)
 {
     if (*type != 5)
         return;
-    my_putstr(buffer);
     int i = 0;
     int map_nb = 0, x = 0, y = 0;
     map_nb = my_getnbr(buffer);

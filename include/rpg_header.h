@@ -313,6 +313,7 @@ typedef struct our_bools {
     bool opened_chest;
     bool first_run;
     bool save;
+    bool music;
 } t_bo;
 
 typedef struct our_ints {
@@ -361,17 +362,11 @@ typedef struct main_screen {
     sfView *hud_view;
 } main_screen;
 
-// * ////////////// CREATE DIR //////////////////////////////////////////
-
-// keyes
-
 void create_keys (void);
 
 struct_keys *all_keys (void);
 
 void qwerty_keyes (void);
-
-// create editor
 
 editor_screen *all_editor(void);
 
@@ -381,13 +376,9 @@ void initialize_editor_vals(void);
 
 void create_editor(void);
 
-// create main
-
 main_screen *all_infos(void);
 
 void create_main(void);
-
-// create maps
 
 void fill_map_dictionary(void);
 
@@ -395,15 +386,11 @@ struct_maps *all_maps(void);
 
 void manage_mouse_click_util_2(tags *game);
 
-// create texts
-
 sf_text *all_texts(void);
 
 void create_texts(void);
 
 void check_win_lose(void);
-
-// create sprite
 
 void inicialize_sprite_option_2(tags *game);
 
@@ -417,16 +404,11 @@ void full_perso(int type, int x, int y);
 
 sprite_pictures *all_sprites(void);
 
-// * ////////////// LEVEL1 DIR //////////////////////////////////////////
-// interact change map
-
 void move_to_map(int map, int x, int y);
 
 int player_is_on_case(int x, int y);
 
 void check_all_intecract_map_actual(void);
-
-// disp mg
 
 void disp_mg(void);
 
@@ -448,8 +430,6 @@ void initialize_bounds_end_game(tags *game);
 
 void analyse_events_end_game(tags *game);
 
-// disp map
-
 void disp_map(char **map);
 
 void level_selection(tags *game);
@@ -462,45 +442,25 @@ void render_pause(tags *game);
 
 void manage_mouse_click_pause_game(tags *game);
 
-// level 1 anim enemis
-
 void anim_all_enemies(void);
-
-// level 1 anim hunter
 
 void anim_perso_according_to_int(void);
 
-// level 1 anim
-
 void anim_perso (void);
-
-// change look hunter
-
-// void change_look_hunter(void);
-
-// enevt
 
 void recalculate_the_sprite_perso(void);
 
 void event_level_game(sfEvent event);
 
-// level 1 var move
-
 void idle_perso(void);
 
 void move_to_map(int map, int x, int y);
-
-// void move_to_salle_une (void);
-
-// void move_to_exterieure_une (void);
 
 void modify_var_move_next(sfEvent event, char a);
 
 void modify_var_move(sfEvent event);
 
 void bow_release(void);
-
-// level 1
 
 void level_game_animations(void);
 
@@ -512,11 +472,7 @@ void display_hud(void);
 
 void level_game(sfEvent event);
 
-// write map
-
 void write_maps(void);
-
-// particules
 
 void find_tile_particle(char c, int i, int j);
 
@@ -526,10 +482,6 @@ void anim_all_particules(void);
 
 void print_all_particules(void);
 
-// * ////////////// EDITOR DIR //////////////////////////////////////////
-
-// change size map tools
-
 void add_new_y(char **map, int size, char c);
 
 void delete_y(char **map, int size);
@@ -538,11 +490,7 @@ void add_new_x(char **map, int size, char c);
 
 void delete_x(char **map, int size);
 
-// change size map
-
 void change_size_map(void);
-
-// disp map editor
 
 void disp_map_next(char **map, int i, int j);
 
@@ -550,15 +498,11 @@ void disp_map_editor(char **map);
 
 void disp_value_to_print(void);
 
-// disp right
-
 void display_boxes(void);
 
 void disp_text_size(void);
 
 void disp_text_and_boxes(void);
-
-// menu
 
 void create_menu(void);
 
@@ -596,19 +540,11 @@ void analyse_events_option(tags *game);
 
 void render_option(tags *game);
 
-// le bon click editor
-
 void le_bon_click_editor(sfEvent event);
-
-// map editor click infos right
 
 void editor_click_infos_right(sfVector2i pos_mouse);
 
-// existing file
-
 void edit_existing_file(char *filepath_dir);
-
-// map editor
 
 int round_sup(float a);
 
@@ -624,12 +560,7 @@ void level_map_editor_clock(void);
 
 void level_map_editor(sfEvent event);
 
-// * ////////////// INVENTORY DIR //////////////////////////////////////////
-
 void level_inventory(sfEvent event);
-// * ////////////// SRC DIR //////////////////////////////////////////
-
-// ennemis
 
 void move_all_ennemies(void);
 
@@ -639,8 +570,6 @@ int can_be_moved(int x, int y, enemies *enemy);
 
 void get_new_vals(enemies *enemy);
 
-// ennemis
-
 void add_enemies_to_list(int map, int value, int x, int y);
 
 void explore_map_find_all_ennemis_next(int map, int i, int j);
@@ -648,8 +577,6 @@ void explore_map_find_all_ennemis_next(int map, int i, int j);
 void explore_map_find_all_ennemis(int map);
 
 void display_all_enemies(void);
-
-// npcs
 
 void explore_map_find_all_npcs(int map);
 
@@ -659,15 +586,9 @@ void disp_interaction_button(void);
 
 void level_quest(void);
 
-// missions
-
 void level_missions(void);
 
-// bonus
-
 void level_bonus(void);
-
-// free
 
 void free_map(int i);
 
@@ -675,23 +596,15 @@ void free_particules(void);
 
 void load_game_utils(tags *game);
 
-// level 2 (pause peut-etre)
-
 void level_2(sfEvent event);
 
-// level 0
-
 void level_0(sfEvent event);
-
-// all
 
 int start_game(int ac, char **av);
 
 void start_game_loop(void);
-// open file
 
 char **filepath_to_arr(char *filepath);
-// tools 1
 
 int random_int(int min, int max);
 

@@ -75,6 +75,8 @@ void event_level_game_pressed(sfEvent event)
         }
         all_sprites()[HUNTER].rect.left = 16 * 3;
     }
+    if (event.key.code == sfKeyEscape)
+        all_infos()->level = PAUSE_GAME;
     event_level_game_pressed_next(event);
     change_scale(event);
     event_npc(event);

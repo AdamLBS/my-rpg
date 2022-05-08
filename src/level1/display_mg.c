@@ -37,7 +37,6 @@ void check_life(void)
         i++;
         tmp = tmp->next;
     }
-    printf("%d\n", all_infos()->nb_of_enemies_outside);
 }
 
 void disp_mg_next (int i)

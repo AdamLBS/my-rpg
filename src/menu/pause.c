@@ -34,6 +34,9 @@ void pause_event(tags *game)
 
 void set_sprite_pause(tags *game)
 {
+    game->text->tstart =
+    sfTexture_createFromFile("pictures/menu_buttons/Resume.png", NULL);
+    sfSprite_setTexture(game->sprites->sstart, game->text->tstart, sfTrue);
     sfSprite_setScale(game->sprites->sstart, (sfVector2f) {1.3, 1.3});
     sfSprite_setPosition(game->sprites->sstart, (sfVector2f) {780, 440});
     sfSprite_setTexture(game->sprites->squit, game->text->tquit, sfTrue);

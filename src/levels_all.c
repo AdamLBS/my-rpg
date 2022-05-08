@@ -60,6 +60,7 @@ void start_game_loop(void)
 {
     tags *game = malloc(sizeof(tags));
     malloc_all(game);
+    game->f_rects->sound = 0;
     game_loop(game);
     free_particules();
     free(all_infos());

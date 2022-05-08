@@ -21,11 +21,11 @@ void save_quests(FILE *fd)
 
 void save_quests_id(FILE *fd)
 {
-    if (!all_infos()->in->quest_id)
+    if (!all_infos()->quest_id)
         return;
     fwrite("#quest_done\n", 1, my_strlen("#quest_done\n"), fd);
-    fwrite(my_itoa(all_infos()->in->quest_id), 1,
-    my_strlen(my_itoa(all_infos()->in->quest_id)), fd);
+    fwrite(my_itoa(all_infos()->quest_id), 1,
+    my_strlen(my_itoa(all_infos()->quest_id)), fd);
     fwrite("\n", 1, 1, fd);
     return;
 }
@@ -46,7 +46,7 @@ void restore_quests_done(char *buffer, int *type)
     if (*type != 7)
         return;
     int quest = my_getnbr(buffer);
-    all_infos()->in->quest_id = quest;
-    all_infos()->bo->doing_quest = 1;
+    all_infos()->quest_id = quest;
+    all_infos()->doing_quest = 1;
     return;
 }

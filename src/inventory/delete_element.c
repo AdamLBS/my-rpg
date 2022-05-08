@@ -26,7 +26,7 @@ void delete_element_inv(int position)
     }
     use_elem(node);
     node->next = tmp->next;
-    all_infos()->in->inventory_move -= 1;
+    all_infos()->inventory_move -= 1;
     free(tmp);
 }
 
@@ -40,18 +40,18 @@ void use_elem(struct_inventory *node)
 
 void increase_health_and_stamina(int health, int stamina)
 {
-    if (all_infos()->in->life + health <= all_infos()->in->life_size / 15)
-        all_infos()->in->life += health;
-    else if (all_infos()->in->life + 1 <= all_infos()->in->life_size / 15) {
-        all_infos()->in->life += 1;
+    if (all_infos()->life + health <= all_infos()->life_size / 15)
+        all_infos()->life += health;
+    else if (all_infos()->life + 1 <= all_infos()->life_size / 15) {
+        all_infos()->life += 1;
     }
     if (stamina == 1) {
-        all_infos()->stamina = all_infos()->in->life_size / 15;
+        all_infos()->stamina = all_infos()->life_size / 15;
         return;
     }
-    if (stamina == 2 &&  (all_infos()->in->life_size / 15) / 2 < 5) {
-        all_infos()->stamina = (all_infos()->in->life_size / 15) / 2;
-    } else if (all_infos()->stamina + 1 <= all_infos()->in->life_size / 15) {
+    if (stamina == 2 &&  (all_infos()->life_size / 15) / 2 < 5) {
+        all_infos()->stamina = (all_infos()->life_size / 15) / 2;
+    } else if (all_infos()->stamina + 1 <= all_infos()->life_size / 15) {
         all_infos()->stamina += 1;
     }
 }

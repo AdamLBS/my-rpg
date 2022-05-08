@@ -22,31 +22,31 @@ void malloc_all(tags *game)
 
 void game_loop2(tags *game, sfEvent event)
 {
-    if (all_infos()->in->level == INVENTORY)
+    if (all_infos()->level == INVENTORY)
         level_inventory(event);
-    if (all_infos()->in->level == DIALOGUE)
+    if (all_infos()->level == DIALOGUE)
         level_quest();
-    if (all_infos()->in->level == MISSIONS)
+    if (all_infos()->level == MISSIONS)
         level_missions();
-    if (all_infos()->in->level == BONUS)
+    if (all_infos()->level == BONUS)
         level_bonus();
-    if (all_infos()->in->level == CHEST)
+    if (all_infos()->level == CHEST)
         chest_level();
-    if (all_infos()->in->level == OPTIONS)
+    if (all_infos()->level == OPTIONS)
         level_option(game);
-    if (all_infos()->in->level == CHOSE_NPC)
+    if (all_infos()->level == CHOSE_NPC)
         level_selection(game);
-    if (all_infos()->in->level == STORY)
+    if (all_infos()->level == STORY)
         story();
-    if (all_infos()->in->level == PAUSE_GAME)
+    if (all_infos()->level == PAUSE_GAME)
         level_pause(game);
     game_loop3(game, event);
 }
 
 void game_loop3(tags *game, sfEvent event)
 {
-    if (all_infos()->in->level == MAP_EDITOR)
+    if (all_infos()->level == MAP_EDITOR)
         level_map_editor(event);
-    if (all_infos()->in->level == END)
+    if (all_infos()->level == END)
         level_end(game);
 }

@@ -41,7 +41,7 @@ void disp_inventory (void)
 
 void fill_inventory(void)
 {
-    int i = 0, run = 0;
+    int size = nmb_inv(), nmb_y = 0, i = 0, run = 0;
     struct_inventory *val = all_infos()->inventory;
     if (!val)
         print_emptyinv();
@@ -68,11 +68,11 @@ void event_level_inventory(sfEvent event)
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtKeyPressed &&
         event.key.code == all_keys()->k_interact)
-            delete_element_inv(all_infos()->in->inventory_move);
+            delete_element_inv(all_infos()->inventory_move);
         if (event.type == sfEvtKeyPressed &&
         event.key.code == all_keys()->k_open_bag) {
-            all_infos()->in->text_char = 0;
-            all_infos()->in->level = GAME;
+            all_infos()->text_char = 0;
+            all_infos()->level = GAME;
         }
         inventory_utils_event(event);
     }
@@ -82,15 +82,15 @@ void event_level_inventory(sfEvent event)
 void level_inventory(sfEvent event)
 {
     event_level_inventory(event);
-    if (all_infos()->in->quit_main == 1) {
+    if (all_infos()->quit_main == 1) {
         close_sounds();
         write_infos_to_file();
         return;
     }
-    disp_map(all_maps()[all_infos()->in->map_actual].bg);
+    disp_map(all_maps()[all_infos()->map_actual].bg);
     print_all_particules();
     disp_mg();
-    disp_map(all_maps()[all_infos()->in->map_actual].fg);
+    disp_map(all_maps()[all_infos()->map_actual].fg);
     disp_all_npcs();
     disp_interaction_button();
     sfRenderWindow_setView(all_infos()->window, all_infos()->hud_view);

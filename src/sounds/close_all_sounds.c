@@ -19,8 +19,6 @@ void close_sounds(void)
     sfSound_destroy(sounds->wood);
     sfSound_destroy(sounds->open_chest);
     sfSound_destroy(sounds->stone);
-    sfMusic_stop(sounds->music);
-    sfMusic_destroy(sounds->music);
 }
 
 void close_soundbuffer(const sfSound *sound)

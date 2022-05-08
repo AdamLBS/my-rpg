@@ -42,7 +42,7 @@ void manage_mouse_click_menu_utils_2(tags *game)
         all_editor()->map_mg = editor_create_map(30, 30, 'R');
         all_editor()->map_fg = editor_create_map(30, 30, 'R');
         all_editor()->ptr_map_edit = all_editor()->map_bg;
-        all_infos()->in->level = MAP_EDITOR;
+        all_infos()->level = MAP_EDITOR;
     }
     render_menu(game);
 }
@@ -56,7 +56,7 @@ void manage_mouse_click_menu(tags *game)
         game->text->tstart = create_texture("pictures/menu_buttons/Play3.png");
         sfSprite_setTexture(game->sprites->sstart, game->text->tstart, sfTrue);
         reset_save();
-        all_infos()->in->level = 11;
+        all_infos()->level = 11;
     }
     if (sfFloatRect_contains(&game->f_rects->option_button_b,
     all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
@@ -64,7 +64,7 @@ void manage_mouse_click_menu(tags *game)
         create_texture("pictures/menu_buttons/Options3.png");
         sfSprite_setTexture(game->sprites->soption,
         game->text->toption, sfTrue);
-        all_infos()->in->level = 8;
+        all_infos()->level = 8;
     }
     manage_click_welcome_util(game);
     manage_mouse_click_menu_utils_2(game);
@@ -75,7 +75,7 @@ void analyse_events_menu(tags *game, sfEvent event)
 {
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtClosed) {
-            all_infos()->in->quit_main = 1;
+            all_infos()->quit_main = 1;
             return;
         }
         if (event.type == sfEvtMouseButtonPressed)

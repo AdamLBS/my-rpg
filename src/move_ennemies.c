@@ -10,7 +10,7 @@
 
 void move_all_ennemies(void)
 {
-    enemies *enemies = all_maps()[all_infos()->in->map_actual].all_ennemis;
+    enemies *enemies = all_maps()[all_infos()->map_actual].all_ennemis;
     while (enemies) {
         sfTime time_anim = sfClock_getElapsedTime(enemies->clock);
         if (time_anim.microseconds > 1000) {
@@ -35,10 +35,10 @@ int can_be_moved(int x, int y, enemies *enemy)
         return 0;
     if (y <= 0 || x <= 0)
         return 0;
-    char tile = all_maps()[all_infos()->in->map_actual].bg[y][x];
+    char tile = all_maps()[all_infos()->map_actual].bg[y][x];
     if (tile != '7' && tile != 'U' && tile != 'G')
         return 0;
-    if (all_maps()[all_infos()->in->map_actual].mg[y][x] != 'R')
+    if (all_maps()[all_infos()->map_actual].mg[y][x] != 'R')
         return 0;
     return 1;
 }

@@ -17,8 +17,12 @@ void check_win_lose(void)
         if (all_infos()->quest_done[i] == '2')
             q2 = 1;
     }
-    if (q1 == 1 && q2 == 1)
-        all_infos()->in->level = END;
-    if (all_infos()->in->life <= 0)
-        all_infos()->in->level = END;
+    if (q1 == 1 && q2 == 1) {
+        all_infos()->level = END;
+        all_texts()->text = my_strdup("YOU WON!");
+    }
+    if (all_infos()->life <= 0) {
+        all_texts()->text = my_strdup("YOU ARE DEAD!");
+        all_infos()->level = END;
+    }
 }

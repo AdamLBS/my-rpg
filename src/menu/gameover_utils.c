@@ -23,7 +23,7 @@ void analyse_events_end_game(tags *game)
     sfEvent event;
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtClosed)
-            all_infos()->in->quit_main = 1;
+            all_infos()->quit_main = 1;
         if (event.type == sfEvtMouseButtonPressed)
             manage_mouse_click_end_game(game);
     }

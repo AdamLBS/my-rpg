@@ -12,7 +12,7 @@ void level_map_editor_event(sfEvent event)
 {
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtClosed) {
-            all_infos()->in->quit_main = 1;
+            all_infos()->quit_main = 1;
             return;
         }
         if (sfKeyboard_isKeyPressed(sfKeyP) && all_editor()->map_bg) {
@@ -25,16 +25,16 @@ void level_map_editor_event(sfEvent event)
 
 void level_map_editor_clock(void)
 {
-    if ((all_infos()->bo->move_u || all_infos()->bo->move_d ||
-    all_infos()->bo->move_r || all_infos()->bo->move_l) &&
-        !(all_infos()->in->clock_val % 2)) {
-        if (all_infos()->bo->move_u)
+    if ((all_infos()->move_u || all_infos()->move_d ||
+        all_infos()->move_r || all_infos()->move_l) &&
+        !(all_infos()->clock_val % 2)) {
+        if (all_infos()->move_u)
             all_infos()->pos_player.y += 10;
-        if (all_infos()->bo->move_d)
+        if (all_infos()->move_d)
             all_infos()->pos_player.y -= 10;
-        if (all_infos()->bo->move_l)
+        if (all_infos()->move_l)
             all_infos()->pos_player.x += 10;
-        if (all_infos()->bo->move_r)
+        if (all_infos()->move_r)
             all_infos()->pos_player.x -= 10;
     }
 }

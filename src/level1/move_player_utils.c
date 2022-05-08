@@ -10,11 +10,11 @@
 
 void move_pos_player_utils(char a)
 {
-    if (all_infos()->bo->move_r && can_move(5, 0)) {
-        all_infos()->bo->can_move = true;
+    if (all_infos()->move_r && can_move(5, 0)) {
+        all_infos()->can_move = true;
         all_infos()->move = 'r';
         move_sprint(5, 0);
-        if (!all_infos()->bo->move_u && !all_infos()->bo->move_d)
+        if (!all_infos()->move_u && !all_infos()->move_d)
             change_pos_and_views(3, 0);
     }
 }

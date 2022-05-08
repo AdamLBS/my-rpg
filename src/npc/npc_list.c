@@ -66,7 +66,7 @@ void explore_map_find_all_npcs(int map)
 
 void disp_all_npcs(void)
 {
-    npcs *expl = all_maps()[all_infos()->in->map_actual].all_npcs;
+    npcs *expl = all_maps()[all_infos()->map_actual].all_npcs;
     while (expl) {
         sfSprite_setPosition(all_sprites()[expl->value].sprite, expl->pos);
         sfRenderWindow_drawSprite(all_infos()->window,

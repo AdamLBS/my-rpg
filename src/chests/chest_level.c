@@ -11,15 +11,15 @@
 void chest_level(void)
 {
     event_level_chest();
-    if (all_infos()->in->quit_main == 1) {
+    if (all_infos()->quit_main == 1) {
         close_sounds();
         write_infos_to_file();
         return;
     }
-    disp_map(all_maps()[all_infos()->in->map_actual].bg);
+    disp_map(all_maps()[all_infos()->map_actual].bg);
     print_all_particules();
     disp_mg();
-    disp_map(all_maps()[all_infos()->in->map_actual].fg);
+    disp_map(all_maps()[all_infos()->map_actual].fg);
     disp_all_npcs();
     is_onchest();
     sfRenderWindow_setView(all_infos()->window, all_infos()->hud_view);
@@ -37,14 +37,14 @@ void event_level_chest(void)
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtKeyPressed &&
         event.key.code == all_keys()->k_interact) {
-            all_infos()->in->text_char = 0;
-            all_infos()->in->banana_nb = 0;
-            all_infos()->in->apple_nb = 0;
-            all_infos()->in->level = GAME;
-            all_infos()->bo->opened_chest = false;
+            all_infos()->text_char = 0;
+            all_infos()->banana_nb = 0;
+            all_infos()->apple_nb = 0;
+            all_infos()->level = GAME;
+            all_infos()->opened_chest = false;
         }
         if (event.type == sfEvtClosed) {
-            all_infos()->in->quit_main = 1;
+            all_infos()->quit_main = 1;
             return;
         }
     }
@@ -56,7 +56,7 @@ void print_items(void)
     int nb_of_items = random_int(1, 5);
     int i = 0;
     int pick = 0;
-    if (all_infos()->bo->opened_chest || all_infos()->in->level != CHEST) {
+    if (all_infos()->opened_chest || all_infos()->level != CHEST) {
         print_chestmsg();
         return;
     }
@@ -64,7 +64,7 @@ void print_items(void)
         pick = random_int(1, 2);
         add_item(pick);
         i++;
-        all_infos()->bo->opened_chest = true;
+        all_infos()->opened_chest = true;
     }
 }
 
@@ -72,8 +72,8 @@ void print_chestmsg(void)
 {
     char *text = malloc(sizeof(char) * 200);
     text = my_strcpy(text, "You found ");
-    char *apple_nb = my_itoa(all_infos()->in->apple_nb);
-    char *banana_nb = my_itoa(all_infos()->in->banana_nb);
+    char *apple_nb = my_itoa(all_infos()->apple_nb);
+    char *banana_nb = my_itoa(all_infos()->banana_nb);
     text = my_strcat(text, apple_nb);
     text = my_strcat(text, " apples\n and ");
     text = my_strcat(text, banana_nb);
@@ -85,10 +85,10 @@ void add_item(int pick)
 {
     if (pick == 1) {
         add_to_inventory(&all_infos()->inventory, BANANA);
-        all_infos()->in->banana_nb += 1;
+        all_infos()->banana_nb += 1;
     }
     if (pick == 2) {
         add_to_inventory(&all_infos()->inventory, APPLE);
-        all_infos()->in->apple_nb += 1;
+        all_infos()->apple_nb += 1;
     }
 }

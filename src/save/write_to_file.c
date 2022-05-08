@@ -28,7 +28,7 @@ void write_infos_to_file(void)
 void save_map_actual(FILE *fd)
 {
     fwrite("#map_actual\n", 1, my_strlen("#map_actual\n"), fd);
-    char *map_actual = my_itoa(all_infos()->in->map_actual);
+    char *map_actual = my_itoa(all_infos()->map_actual);
     fwrite(map_actual, 1, my_strlen(map_actual), fd);
     fwrite("\n", 1, 1, fd);
 }

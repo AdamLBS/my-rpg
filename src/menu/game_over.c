@@ -18,7 +18,7 @@ void manage_mouse_click_end_game(tags *game)
         ("pictures/menu_buttons/Menu3.png", NULL);
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
-        all_infos()->in->level = 0;
+        all_infos()->level = 0;
         set_menu(game);
     }
     if (sfFloatRect_contains(&game->f_rects->quit_button_b,
@@ -28,7 +28,7 @@ void manage_mouse_click_end_game(tags *game)
         sfSprite_setTexture(game->sprites->squit,
         game->text->tquit, sfTrue);
         write_infos_to_file();
-        all_infos()->in->quit_main = 1;
+        all_infos()->quit_main = 1;
     }
 }
 
@@ -81,7 +81,7 @@ void inicialize_sprite_end_game(tags *game)
     sfSprite_setTexture(game->sprites->squit, game->text->tquit, sfTrue);
     sfSprite_setScale(game->sprites->squit, (sfVector2f) {1.3, 1.3});
     sfSprite_setPosition(game->sprites->squit, (sfVector2f) {740, 460});
-    sfText_setString(all_texts()->simple_text, "YOU ARE DEAD!");
+    sfText_setString(all_texts()->simple_text, all_texts()->text);
     sfText_setPosition(all_texts()->simple_text, (sfVector2f) {670, 120});
 }
 

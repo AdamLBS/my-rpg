@@ -24,9 +24,9 @@ void pause_event(tags *game)
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if ((event.type == sfEvtKeyPressed) &&
         (event.key.code == sfKeyEscape))
-            all_infos()->in->level = GAME;
+            all_infos()->level = GAME;
         if (event.type == sfEvtClosed)
-            all_infos()->in->quit_main = 1;
+            all_infos()->quit_main = 1;
         if (event.type == sfEvtMouseButtonReleased)
             manage_mouse_click_pause_game(game);
     }
@@ -57,10 +57,10 @@ void level_pause(tags *game)
 {
     set_sprite_pause(game);
     pause_event(game);
-    disp_map(all_maps()[all_infos()->in->map_actual].bg);
+    disp_map(all_maps()[all_infos()->map_actual].bg);
     print_all_particules();
     disp_mg();
-    disp_map(all_maps()[all_infos()->in->map_actual].fg);
+    disp_map(all_maps()[all_infos()->map_actual].fg);
     disp_all_npcs();
     disp_interaction_button();
     mouse_position_pause(game);

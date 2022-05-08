@@ -24,10 +24,9 @@ int does_save_exists(int check)
         return 0;
     if (!check)
     get_info_save();
-    return 1;
 }
 
-void get_info_save(void)
+int get_info_save(void)
 {
     FILE *fd = fopen("save.txt", "r");
     char *line = NULL, *buf = NULL;

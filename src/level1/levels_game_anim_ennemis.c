@@ -77,7 +77,7 @@ void anim_ennemi (enemies *enemy)
 
 void anim_all_enemies (void)
 {
-    enemies *expl = all_maps()[all_infos()->in->map_actual].all_ennemis;
+    enemies *expl = all_maps()[all_infos()->map_actual].all_ennemis;
     while (expl) {
         anim_ennemi(expl);
         expl = expl->next;

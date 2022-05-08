@@ -35,7 +35,7 @@ void check_hunter_collision(projectile_t *projectile)
     sfFloatRect rect_hunter =
     sfSprite_getGlobalBounds(all_sprites()[HUNTER].sprite);
     if (intersects(rect_projectile, rect_hunter)) {
-        all_infos()->in->life -= projectile->damage;
+        all_infos()->life -= projectile->damage;
         projectile->should_render = false;
     }
 }
@@ -44,7 +44,7 @@ void check_enemies_collision(projectile_t *projectile)
 {
     if (!projectile->should_render)
         return;
-    enemies *enemies = all_maps()[all_infos()->in->map_actual].all_ennemis;
+    enemies *enemies = all_maps()[all_infos()->map_actual].all_ennemis;
     sfSprite_setPosition(projectile->sprite_picture.sprite,
     projectile->sprite_picture.pos);
     while (projectile->from_hunter && enemies != NULL) {

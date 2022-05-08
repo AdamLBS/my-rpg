@@ -12,7 +12,7 @@ bool clock_cycle_update(void)
 {
     sfTime time_anim = sfClock_getElapsedTime(all_infos()->clock);
     if (time_anim.microseconds > 10000) {
-        all_infos()->in->clock_val++;
+        all_infos()->clock_val++;
         sfClock_restart(all_infos()->clock);
         return true;
     }
@@ -26,9 +26,9 @@ void on_clock_update(void)
     }
     projectile_game_tick();
     increase_stamina();
-    if (all_infos()->in->level == GAME) {
+    if (all_infos()->level == GAME) {
         level_game_animations();
-    } else if (all_infos()->in->level == MAP_EDITOR) {
+    } else if (all_infos()->level == MAP_EDITOR) {
         level_map_editor_clock();
     }
 }
@@ -38,16 +38,16 @@ void game_loop(tags *game)
     sfEvent event;
     while (sfRenderWindow_isOpen(all_infos()->window)) {
         is_onchest();
-        if (all_infos()->in->level == GAME)
+        if (all_infos()->level == GAME)
             move_all_ennemies();
         all_infos()->size_window = sfRenderWindow_getSize(all_infos()->window);
         sfRenderWindow_clear(all_infos()->window, sfBlack);
         on_clock_update();
-        if (all_infos()->in->level == 0)
+        if (all_infos()->level == 0)
             level_menu(game, event);
-        if (all_infos()->in->level == GAME)
+        if (all_infos()->level == GAME)
             level_game(event);
-        if (all_infos()->in->quit_main)
+        if (all_infos()->quit_main)
             return;
         game_loop2(game, event);
         projectile_render_tick();
@@ -56,11 +56,10 @@ void game_loop(tags *game)
     }
 }
 
-void start_game_loop(void)
+int start_game_loop(void)
 {
     tags *game = malloc(sizeof(tags));
     malloc_all(game);
-    all_infos()->bo->music = true;
     game->f_rects->sound = 0;
     game_loop(game);
     free_particules();

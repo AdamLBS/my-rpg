@@ -36,7 +36,7 @@ void manage_mouse_click_util(tags *game)
         sfSprite_setTexture(game->sprites->sframe2,
         game->text->tframe2, sfTrue);
         sfRenderWindow_setFramerateLimit(all_infos()->window, 60);
-        all_infos()->in->frame_rate = 60;
+        all_infos()->frame_rate = 60;
     }
     if (sfFloatRect_contains(&game->f_rects->menu_button_b,
     all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
@@ -44,7 +44,7 @@ void manage_mouse_click_util(tags *game)
         create_texture("pictures/menu_buttons/Menu3.png");
         sfSprite_setTexture(game->sprites->srestart,
         game->text->trestart, sfTrue);
-        all_infos()->in->level = 0;
+        all_infos()->level = 0;
     }
     manage_mouse_click_util_2(game);
 }
@@ -60,7 +60,7 @@ void manage_mouse_click_option(tags *game)
         sfSprite_setTexture(game->sprites->sframe, game->text->tframe, sfTrue);
         sfSprite_setTexture(game->sprites->sframe2,
         game->text->tframe2, sfTrue);
-        all_infos()->in->frame_rate = 30;
+        all_infos()->frame_rate = 30;
         sfRenderWindow_setFramerateLimit(all_infos()->window, 30);
     }
     manage_mouse_click_util(game);
@@ -72,7 +72,7 @@ void analyse_events_option(tags *game)
     sfEvent event;
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtClosed) {
-            all_infos()->in->quit_main = 1;
+            all_infos()->quit_main = 1;
             return;
         }
         if (event.type == sfEvtMouseButtonPressed)

@@ -14,7 +14,7 @@ void manage_click_welcome_util(tags *game)
     all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
         game->text->tquit = create_texture("pictures/menu_buttons/Quit3.png");
         sfSprite_setTexture(game->sprites->squit, game->text->tquit, sfTrue);
-        all_infos()->in->quit_main = 1;
+        all_infos()->quit_main = 1;
     }
     if (sfFloatRect_contains(&game->f_rects->scoreboard_button_b,
     all_infos()->mouse_click.x, all_infos()->mouse_click.y) &&
@@ -23,9 +23,9 @@ void manage_click_welcome_util(tags *game)
         create_texture("pictures/menu_buttons/Scoreboard3.png");
         sfSprite_setTexture(game->sprites->sscoreboard,
         game->text->tscoreboard, sfTrue);
-        all_infos()->bo->save = true;
+        all_infos()->save = true;
         sfView_setSize(all_infos()->view, (sfVector2f) {1920 / 2, 1080 / 2});
-        all_infos()->in->level = 1;
+        all_infos()->level = 1;
     }
 }
 

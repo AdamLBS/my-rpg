@@ -8,6 +8,20 @@
 #include "my.h"
 #include "rpg_header.h"
 
+void manage_mouse_click_util_4(tags *game)
+{
+    all_infos()->mouse_click =
+    sfMouse_getPositionRenderWindow(all_infos()->window);
+    if (sfFloatRect_contains(&game->f_rects->keyboard_button_b,
+    all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
+        azerty_keyes();
+    }
+    if (sfFloatRect_contains(&game->f_rects->keyboard2_button_b,
+    all_infos()->mouse_click.x, all_infos()->mouse_click.y)) {
+        qwerty_keyes();
+    }
+}
+
 void manage_mouse_click_util_2(tags *game)
 {
     all_infos()->mouse_click =
@@ -29,6 +43,7 @@ void manage_mouse_click_util_2(tags *game)
             manage_mouse_click_util_3(game);
         }
     }
+    manage_mouse_click_util_4(game);
 }
 
 void inicialize_sprite_option_2(tags *game)
@@ -38,16 +53,16 @@ void inicialize_sprite_option_2(tags *game)
     sfSprite_setTexture(game->sprites->ssound, game->text->tsound, sfTrue);
     sfSprite_setScale(game->sprites->ssound, (sfVector2f) {1.8, 1.8});
     sfSprite_setPosition(game->sprites->ssound, (sfVector2f) {730, 120});
-    game->text->tkey = create_texture("pictures/menu_buttons/wasd.png");
+    game->text->tkey = create_texture("pictures/menu_buttons/zqsd.png");
     game->sprites->skey = sfSprite_create();
-    game->text->tkey2 = create_texture("pictures/menu_buttons/zqsd.png");
+    game->text->tkey2 = create_texture("pictures/menu_buttons/wasd.png");
     game->sprites->skey2 = sfSprite_create();
     sfSprite_setTexture(game->sprites->skey, game->text->tkey, sfTrue);
     sfSprite_setScale(game->sprites->skey, (sfVector2f) {1.8, 1.8});
-    sfSprite_setPosition(game->sprites->skey, (sfVector2f) {730, 700});
+    sfSprite_setPosition(game->sprites->skey, (sfVector2f) {730, 550});
     sfSprite_setTexture(game->sprites->skey2, game->text->tkey2, sfTrue);
     sfSprite_setScale(game->sprites->skey2, (sfVector2f) {1.8, 1.8});
-    sfSprite_setPosition(game->sprites->skey2, (sfVector2f) {730, 120});
+    sfSprite_setPosition(game->sprites->skey2, (sfVector2f) {1200, 550});
 }
 
 void manage_mouse_click_util_3(tags *game)

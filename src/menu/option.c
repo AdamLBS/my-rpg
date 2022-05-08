@@ -10,7 +10,6 @@
 
 void render_option(tags *game)
 {
-    sfRenderWindow_clear(all_infos()->window, sfBlack);
     sfRenderWindow_drawSprite(all_infos()->window,
     game->sprites->sbackground, NULL);
     sfRenderWindow_drawSprite(all_infos()->window,
@@ -29,6 +28,8 @@ void render_option(tags *game)
     all_texts()->simple_text, NULL);
     sfRenderWindow_drawText(all_infos()->window,
     all_texts()->simple_text2, NULL);
+    sfRenderWindow_drawText(all_infos()->window,
+    all_texts()->simple_text3, NULL);
 }
 
 void inicialize_variables_option(tags *game)
@@ -83,6 +84,10 @@ void initialize_options_game(tags *game)
     game->f_rects->menu_button_b.width = 420;
     game->f_rects->sound_button_b =
     sfSprite_getGlobalBounds(game->sprites->ssound);
+    game->f_rects->keyboard2_button_b =
+    sfSprite_getGlobalBounds(game->sprites->skey2);
+    game->f_rects->keyboard_button_b =
+    sfSprite_getGlobalBounds(game->sprites->skey);
 }
 
 void level_option(tags *game)
@@ -92,7 +97,5 @@ void level_option(tags *game)
     sfText_setString(all_texts()->simple_text, "Frame Rate:");
     sfText_setPosition(all_texts()->simple_text, (sfVector2f) {180, 380});
     sfRenderWindow_setView(all_infos()->window, all_infos()->hud_view);
-    sfRenderWindow_drawText(all_infos()->window,
-    all_texts()->simple_text3, NULL);
     render_option(game);
 }

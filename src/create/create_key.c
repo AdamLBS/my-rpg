@@ -38,6 +38,12 @@ void create_keys(void)
     return;
 }
 
+void azerty_keyes(void)
+{
+    keyes->k_up = sfKeyZ;
+    keyes->k_left = sfKeyQ;
+}
+
 void qwerty_keyes(void)
 {
     keyes->k_up = sfKeyW;

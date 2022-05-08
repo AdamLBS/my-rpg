@@ -18,11 +18,12 @@ void manage_click_welcome_util(tags *game)
     }
     if (sfFloatRect_contains(&game->f_rects->scoreboard_button_b,
     all_infos()->mouse_click.x, all_infos()->mouse_click.y) &&
-    does_save_exists()) {
+    does_save_exists(0)) {
         game->text->tscoreboard =
         create_texture("pictures/menu_buttons/Scoreboard3.png");
         sfSprite_setTexture(game->sprites->sscoreboard,
         game->text->tscoreboard, sfTrue);
+        all_infos()->save = true;
         all_infos()->level = 1;
     }
 }

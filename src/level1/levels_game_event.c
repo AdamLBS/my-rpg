@@ -121,6 +121,11 @@ void event_level_game_relased(sfEvent event)
 
 void event_level_game(sfEvent event)
 {
+    if (!all_infos()->first_run && !all_infos()->save) {
+        full_perso(HUNTER, all_infos()->pos_player.x,
+        all_infos()->pos_player.y);
+        all_infos()->first_run = true;
+    }
     while (sfRenderWindow_pollEvent(all_infos()->window, &event)) {
         if (event.type == sfEvtClosed) {
             all_infos()->quit_main = 1;

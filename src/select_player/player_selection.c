@@ -27,8 +27,9 @@ void level_event(tags *game)
             return;
         }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEnter) {
-            all_infos()->level = 1;
             full_perso(HUNTER, 10 * 50, 10 * 35);
+            all_infos()->level = GAME;
+            return;
         }
         if (event.type == sfEvtMouseButtonReleased)
             manage_mouse_click_level(game);

@@ -72,7 +72,7 @@ void initialize_sprite_menu(tags *game)
 
 void load_game_utils(tags *game)
 {
-    if (!does_save_exists()) {
+    if (!does_save_exists(1)) {
         game->text->tscoreboard =
         create_texture("pictures/menu_buttons/Scoreboard3.png");
         sfSprite_setTexture(game->sprites->sscoreboard,
@@ -81,7 +81,7 @@ void load_game_utils(tags *game)
     }
     if (sfFloatRect_contains(&game->f_rects->scoreboard_button_b,
         all_infos()->mouse_position.x, all_infos()->mouse_position.y) &&
-        does_save_exists()) {
+        does_save_exists(1)) {
             game->text->tscoreboard = create_texture
             ("pictures/menu_buttons/Scoreboard2.png");
             sfSprite_setTexture(game->sprites->sscoreboard,

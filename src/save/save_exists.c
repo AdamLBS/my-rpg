@@ -8,13 +8,22 @@
 #include "my.h"
 #include "rpg_header.h"
 
-int does_save_exists(void)
+int does_save_exists(int check)
 {
     FILE *fd = fopen("save.txt", "r");
     if (fd == NULL)
         return 0;
-    if (!get_info_save())
+    size_t len;
+    char *buf = NULL;
+    int save = 0;
+    while (getline(&buf, &len, fd) != -1) {
+        if (my_strstr(buf, "#player_pos"))
+            save = 1;
+    }
+    if (!save)
         return 0;
+    if (!check)
+    get_info_save();
 }
 
 int get_info_save(void)

@@ -68,8 +68,10 @@ void create_main(void)
     infos->ennemy_id = 0;
     infos->quit_main = 0;
     infos->map_actual = 0;
-    infos->pos_player.x = 0;
-    infos->pos_player.y = 0;
+    infos->pos_player.x = 500;
+    infos->pos_player.y = 350;
+    infos->first_run = false;
+    infos->save = false;
     infos->nb_of_zoom = 1;
     infos->zoom = 1;
     infos->move = '\0';

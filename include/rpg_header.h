@@ -316,6 +316,8 @@ typedef struct main_screen {
     bool sprint;
     bool can_move;
     bool opened_chest;
+    bool first_run;
+    bool save;
     int nb_of_zoom;
     int banana_nb;
     int apple_nb;
@@ -716,7 +718,7 @@ void save_view_to_file(FILE *fd);
 
 void save_inventory_to_file(FILE *fd);
 
-int does_save_exists(void);
+int does_save_exists(int check);
 
 void handle_player_pos(char *buffer, int *type, int run);
 
@@ -801,3 +803,5 @@ void close_sounds(void);
 void close_soundbuffer(sfSound const *sound);
 
 void reset_save(void);
+
+void load_game_utils(tags *game);

@@ -140,6 +140,7 @@ struct float_rect {
     sfFloatRect editor_button_b;
     sfFloatRect sound_button_b;
     sfFloatRect keyboard_button_b;
+    sfFloatRect keyboard2_button_b;
     int sound;
 } typedef f_rect;
 

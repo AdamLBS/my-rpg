@@ -21,12 +21,14 @@ void render_option(tags *game)
     game->sprites->srestart, NULL);
     sfRenderWindow_drawSprite(all_infos()->window,
     game->sprites->ssound, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->skey, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->skey2, NULL);
     sfRenderWindow_drawText(all_infos()->window,
     all_texts()->simple_text, NULL);
     sfRenderWindow_drawText(all_infos()->window,
     all_texts()->simple_text2, NULL);
-    sfRenderWindow_drawText(all_infos()->window,
-    all_texts()->simple_text3, NULL);
 }
 
 void inicialize_variables_option(tags *game)
@@ -90,5 +92,7 @@ void level_option(tags *game)
     sfText_setString(all_texts()->simple_text, "Frame Rate:");
     sfText_setPosition(all_texts()->simple_text, (sfVector2f) {180, 380});
     sfRenderWindow_setView(all_infos()->window, all_infos()->hud_view);
+    sfRenderWindow_drawText(all_infos()->window,
+    all_texts()->simple_text3, NULL);
     render_option(game);
 }

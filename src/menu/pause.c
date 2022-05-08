@@ -16,6 +16,10 @@ void render_pause(tags *game)
     game->sprites->sstart, NULL);
     sfRenderWindow_drawSprite(all_infos()->window,
     game->sprites->srestart, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->skey, NULL);
+    sfRenderWindow_drawSprite(all_infos()->window,
+    game->sprites->skey2, NULL);
 }
 
 void pause_event(tags *game)

@@ -68,6 +68,8 @@ void game_loop(tags *game)
             story();
         if (all_infos()->level == PAUSE_GAME)
             level_pause(game);
+        if (all_infos()->level == END)
+            level_end(game);
         if (all_infos()->quit_main)
             return;
         check_win_lose();

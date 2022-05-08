@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg_header.h"
 
-void increase_life(void)
+void increase(int health, int stamina)
 {
-    all_infos()->life_size += 15;
+    all_infos()->life_size += health;
 }

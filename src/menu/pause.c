@@ -50,30 +50,19 @@ void set_sprite_pause(tags *game)
     sfSprite_getGlobalBounds(game->sprites->sstart);
 }
 
-void initialize_sprite_pause_game(tags *game)
-{
-    game->text->tstart = create_texture("pictures/menu_buttons/Resume.png");
-    game->sprites->sstart = sfSprite_create();
-    game->text->tquit = create_texture("pictures/menu_buttons/Quit.png");
-    game->sprites->squit = sfSprite_create();
-    game->text->trestart = create_texture("pictures/menu_buttons/Menu.png");
-    game->sprites->srestart = sfSprite_create();
-    set_sprite_pause(game);
-}
-
 void level_pause(tags *game)
 {
-    initialize_sprite_pause_game(game);
+    set_sprite_pause(game);
     pause_event(game);
-    mouse_position_pause(game);
     disp_map(all_maps()[all_infos()->map_actual].bg);
     print_all_particules();
     disp_mg();
     disp_map(all_maps()[all_infos()->map_actual].fg);
     disp_all_npcs();
     disp_interaction_button();
+    mouse_position_pause(game);
     sfRenderWindow_setView(all_infos()->window, all_infos()->hud_view);
-    display_hud();
     render_pause(game);
+    display_hud();
     sfRenderWindow_setView(all_infos()->window, all_infos()->view);
 }

@@ -33,11 +33,12 @@ void display_stamina(void)
     sfRectangleShape *stamina = sfRectangleShape_create();
     sfRectangleShape_setPosition(stamina, pos2);
     sfRectangleShape_setFillColor(stamina, sfBlack);
-    sfRectangleShape_setSize(stamina, (sfVector2f){150, 15});
+    sfRectangleShape_setSize(stamina,
+    (sfVector2f) {all_infos()->life_size, 15});
     sfRenderWindow_drawRectangleShape(all_infos()->window, stamina, NULL);
     sfRectangleShape_setFillColor(stamina, sfGreen);
     sfRectangleShape_setSize(stamina,
-    (sfVector2f){all_infos()->stamina * 15, 15});
+    (sfVector2f) {all_infos()->stamina * 15, 15});
     sfRenderWindow_drawRectangleShape(all_infos()->window, stamina, NULL);
     sfRectangleShape_destroy(stamina);
 }
